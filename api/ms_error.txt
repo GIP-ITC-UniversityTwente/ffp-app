@@ -1,0 +1,18 @@
+[Wed Jan 20 16:09:58 2021].553000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Jan 20 16:09:58 2021].584000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Jan 20 16:38:02 2021].648000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Jan 20 16:38:02 2021].676000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Jan 20 17:32:51 2021].652000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Jan 20 17:32:51 2021].680000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Jan 20 18:07:21 2021].839000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Jan 20 18:07:21 2021].865000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Jan 20 20:34:08 2021].120000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Jan 20 20:34:08 2021].162000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Feb  3 14:42:50 2021].379000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Feb  3 14:42:50 2021].412000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Fri Feb 19 11:00:08 2021].660000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Fri Feb 19 11:00:08 2021].691000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Mon Mar 22 16:43:41 2021].781000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Mon Mar 22 16:43:41 2021].961000 msQueryByRect(): Search returned no results. No matching record(s) found.
+[Wed Mar 31 12:04:23 2021].973000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
+[Wed Mar 31 12:04:24 2021].12000 msQueryByRect(): Search returned no results. No matching record(s) found.

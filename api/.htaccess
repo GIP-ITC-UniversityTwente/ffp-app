@@ -1,0 +1,22 @@
+Options +ExecCGI
+AddHandler cgi-script .py
+RewriteEngine on
+
+
+RewriteRule ^spatialunit/(.*)/$ ./_spatialunit.py?operation=$1 [QSA,L]
+RewriteRule ^party/(.*)/$ ./_party.py?operation=$1 [QSA,L]
+
+RewriteRule ^tools/(.*)/$ ./_tools.py?function=$1 [QSA,L]
+
+RewriteRule ^attachment/$ ./_attachment.py?operation=get [QSA,L]
+RewriteRule ^attachment/(upload|capture)/$ ./_savefile.py? [QSA,L]
+
+RewriteRule ^dashboard/data/$ ./_dashboard.py [QSA,L]
+
+RewriteRule ^concepts/update/$ ./updateconcepts.py [QSA,L]
+
+RewriteRule ^rights/(.*)/$ ./_rights.py?operation=$1 [QSA,L]
+
+RewriteRule ^certificate/$ ./_certificates.py?operation=get [QSA,L]
+
+RewriteRule ^inquieries/(.*)/$ ./_inquieries.py?operation=$1 [QSA,L]

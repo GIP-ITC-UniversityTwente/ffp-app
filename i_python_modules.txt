@@ -1,0 +1,29 @@
+
+
+#---
+# Apache & Python configuration
+#---
+
+
+$ edit ms4w/apache/conf/httpd.conf
+	# mod_wsgi settings
+	LoadFile "C:/ms4w/python/python39.dll"
+	LoadModule wsgi_module "C:/ms4w/python/lib/site-packages/mod_wsgi/server/mod_wsgi.cp39-win32.pyd"
+	WSGIPythonHome "C:/ms4w/python"
+	SetEnv PYTHONHOME "C:/ms4w/python"
+
+# copy favicon.ico to C:\ms4w\Apache\htdocs
+
+$ pip install pathlib
+
+$ pip install psycopg2
+
+
+
+
+#---
+# Digitalpersona connection
+#---
+
+https://127.0.0.1:52181/get_connection
+https://127.0.0.1:9001/connect
