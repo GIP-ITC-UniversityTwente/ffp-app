@@ -31,7 +31,42 @@ export const mapStyle = {
                     color: fillColor
                 }),
                 text: new ol.style.Text({
-                    text: feature.get(fieldName),
+                    text: (fieldName !== null) ? feature.get(fieldName) : '',
+                    textAlign: 'center',
+                    font: 'Normal 16px Calibri,sans-serif',
+                    overflow: overflow,
+                    fill: new ol.style.Fill({color: textFill}),
+                    stroke: new ol.style.Stroke({color: textStroke, width: 3})
+                })
+            });
+        };
+    },
+
+    spatialunitHover: function(fieldName, overflow){
+        return function(feature){
+            if (overflow == null) { overflow = true; }
+            var strokeColor, fillColor, textFill, textStroke;
+            if (appdata.imageBasemap){
+                strokeColor = '#fff'; //'#0094FF';
+                fillColor = 'rgba(255, 255, 255, 0.20)';
+                textFill = '#fff';
+                textStroke = '#000';
+            } else {
+                strokeColor = '#8c8cb2'; //'#0094FF';
+                fillColor = 'rgba(50, 50, 50, 0.15)';
+                textFill = '#fff';
+                textStroke = '#666699';
+            }
+            return new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: strokeColor,
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: fillColor
+                }),
+                text: new ol.style.Text({
+                    text: (fieldName !== null) ? feature.get(fieldName) : '',
                     textAlign: 'center',
                     font: 'Normal 16px Calibri,sans-serif',
                     overflow: overflow,
@@ -246,6 +281,31 @@ export const mapStyle = {
                     text: feature.get('ogc_id'),
                     fill: new ol.style.Fill({color: '#fff'}),
                     stroke: new ol.style.Stroke({color: '#000', width: 3}),
+                    rotation: 0
+                })
+            });
+        };
+    },
+
+
+    inquieriesHover: function(oid){
+        return function(feature){
+            return new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: '#A941D8', //'#76bdd5'
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(118, 189, 213, 0.3)'
+                }),
+                text: new ol.style.Text({
+                    textAlign: 'center',
+                    textBaseline: 'middle',
+                    font: 'Normal 16px Calibri,sans-serif',
+                    overflow: true,
+                    text: (oid) ? feature.get('ogc_id') : feature.get('physical_id') ? feature.get('physical_id').join(', ') : '',
+                    fill: new ol.style.Fill({color: '#fff'}),
+                    stroke: new ol.style.Stroke({color: '#a941d8', width: 3.5}),
                     rotation: 0
                 })
             });

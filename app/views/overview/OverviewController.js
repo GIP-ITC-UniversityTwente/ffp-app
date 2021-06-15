@@ -24,6 +24,7 @@ export var OverviewCtrl = {
     conflictsLayer: null,
     spatialunitsLayer: null,
     boundaryStatusLayer: null,
+    timelineWMSLayer: null,
 
     spatialunitConceptsLayer: null,
 
@@ -107,7 +108,7 @@ export var OverviewCtrl = {
         /* boundaryStatusLayer */
             this.boundaryStatusLayer = new ol.layer.Vector({
                 source: new ol.source.Vector(),
-                title: __('Boundary Status'),
+                title: 'Boundary Status',
                 name: 'boundary_status',
                 switcher: true,
                 style: mapStyle.boundaryStatus()
@@ -127,13 +128,13 @@ export var OverviewCtrl = {
 
 
         {/* timeline layers */
-            this.timelineLWMSayer = new ol.layer.Image({
+            this.timelineWMSLayer = new ol.layer.Image({
                 source: new ol.source.ImageWMS(),
                 name: 'timelinewms',
                 switcher: false,
                 visible: false
             });
-            this.navMap.addLayer(this.timelineLWMSayer)
+            this.navMap.addLayer(this.timelineWMSLayer)
 
             this.timelineLayer = new ol.layer.Vector({
                 source: new ol.source.Vector(),
@@ -177,13 +178,12 @@ export var OverviewCtrl = {
                     text: __('Some values were recalculated to reflect the SRID change'),
                     expire: 2000
                 });
+            this.sridChanged = false;
         }
 
         if (this.refreshView){
 
             if (!this.mapRendered) this.initMap($$('ovw:navmap').navMap);
-            if (appdata.mosaic) this.mosaicLayer.setVisible(true);
-
 
             this.spatialunitsLayer.getSource().clear();
             this.selectInteraction.getFeatures().clear();
@@ -231,7 +231,7 @@ export var OverviewCtrl = {
                 url: appdata.wfsUrl + '&typename=ffp:boundary_status'
             }));
 
-            this.timelineLWMSayer.setSource(new ol.source.ImageWMS({
+            this.timelineWMSLayer.setSource(new ol.source.ImageWMS({
                 url: appdata.wmsUrl,
                 params: {
                     'LAYERS': 'boundary_status',
@@ -242,6 +242,7 @@ export var OverviewCtrl = {
             $$('ovw:search_combo').getList().config.dataFeed = 'api/spatialunit/search/?' + appdata.querystring;
 
             this.refreshView = false;
+            this.sridChanged = false;
         }
     },
 
@@ -506,7 +507,7 @@ export var OverviewCtrl = {
                 $$('ovw:search_box').disable();
                 OverviewCtrl.selectInteraction.setActive(false);
 
-                OverviewCtrl.timelineLWMSayer.setVisible(true);
+                OverviewCtrl.timelineWMSLayer.setVisible(true);
                 var index = 0
                 function addBoundary(){
                     OverviewCtrl.timelineLayer.getSource().addFeature(features[index]);
@@ -519,7 +520,7 @@ export var OverviewCtrl = {
                                 expire: 1000
                             });
                             OverviewCtrl.timelineLayer.getSource().clear();
-                            OverviewCtrl.timelineLWMSayer.setVisible(false);
+                            OverviewCtrl.timelineWMSLayer.setVisible(false);
                             $$('nav:sidebar').enable();
                             $$('ovw:infopanel').enable();
                             $$('ovw:layer_switcher').enable();

@@ -78,8 +78,17 @@ export var SettingsCtrl = {
             ctrl.spatialunitsLayer.setStyle(mapStyle.spatialunitWithLabel('label'));
             ctrl.approvalLayer.setStyle(mapStyle.selectedSpatialunitWithLabel('label'));
         } else {
-            $$('approval-cnt').config.getController().switchBasemap = true;
+            ctrl.switchBasemap = true;
         }
+
+        var ctrl = $$('inquieries-cnt').config.getController();
+        if (ctrl.navMap){
+            ctrl.navMap.setBasemap(newBasemap);
+            ctrl.spatialunitLayer.setStyle(mapStyle.spatialunitWithLabel(null));
+        } else {
+            ctrl.switchBasemap = true;
+        }
+
     },
 
 
@@ -194,6 +203,8 @@ export var SettingsCtrl = {
         $$('dashboard-cnt').config.getController().refreshView = true;
         if ($$('approval-cnt').config.getController().mapCtrl.navMap)
             $$('approval-cnt').config.getController().refreshView = true;
+        $$('inquieries-cnt').config.getController().refreshView = true;
+
 
         /* reset certificates view */
         if (appdata.basedata.roads){
@@ -272,15 +283,18 @@ export var SettingsCtrl = {
             appdata.srid = srid;
             $$('app:srtext').setValue($$('app:srid_list').getList().getItem(appdata.srid).displaytext);
 
-                $$('dashboard-cnt').config.getController().sridChanged = true;
-                $$('approval-cnt').config.getController().sridChanged = true;
+            $$('dashboard-cnt').config.getController().sridChanged = true;
+            $$('approval-cnt').config.getController().sridChanged = true;
 
-                let ovwCtrl = $$('overview-cnt').config.getController()
-                if (ovwCtrl.selectInteraction)
+            $$('inq:container').setValue('inq:list');
+
+            let ovwCtrl = $$('overview-cnt').config.getController()
+            if (ovwCtrl.selectInteraction){
                 if (ovwCtrl.selectInteraction.getFeatures().getArray().length == 1){
                     ovwCtrl.onFeatureSelected(ovwCtrl.selectInteraction.getFeatures().getArray()[0]);
                     $$('overview-cnt').config.getController().sridChanged = true;
                 }
+            }
 
             appdata.sridTooltip = __('Value calculated using') +
                 ' SRID: <span class="srid">' + appdata.srid + '</span>'

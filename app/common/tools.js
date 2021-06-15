@@ -24,7 +24,7 @@ export const showFullSizeImage = (obj, att_class, image_src) => {
 
 
 
-/* 90 degrees image rotation */
+/* Image rotation */
 export const _rotateImage = (target) => {
     var imageEl = $$($$(target).getActiveId());
     var imageObj = imageEl.getNode().getElementsByTagName('img')[0];
@@ -35,7 +35,7 @@ export const _rotateImage = (target) => {
     webix.html.addCss(imageObj, 'rotate-' + rotation);
     imageObj.setAttribute('rotation', rotation);
 };
-/* 90 degrees image rotation */
+/* Image rotation v1 */
 export const rotateImage = (event, imageObj) => {
     if (event.ctrlKey){
         var rotation = imageObj.getAttribute('rotation');
@@ -46,7 +46,6 @@ export const rotateImage = (event, imageObj) => {
         imageObj.setAttribute('rotation', rotation);
     }
 };
-
 
 
 /* Error message popup */
@@ -70,7 +69,7 @@ export const showErrorMsg = (err, sourceMsg) => { /* err -> sever error */
 
 
 
-/* Attachment template */
+/* Attachment templates */
 export const attachmentTemplate = (image) => {
     var id = (!image.alt) ? 'blank-image' : image.alt;
     return  '<img id="' + id + '" class="' + image.class + '_attachment" src="' + image.src + '" alt="' + image.alt +
@@ -79,6 +78,15 @@ export const attachmentTemplate = (image) => {
     + "'" + image.class + "','" + image.alt + "'" +')" onclick="rotateImage(event, this)" title="' + appdata.imageTooltip + '"/>'
 };
 
+export const attachmentTemplateExt = (image) => {
+    var id = (!image.alt) ? 'blank-image' : image.alt;
+    return  '<div class="flex_div"><img id="' +
+        id + '" class="' + image.class + '_attachment" src="' + image.src + '" alt="' + image.alt +
+        '" rotation="0" ' + 'onerror="onImageError(this)" ondblclick="showFullSizeImage(this,' +
+        "'" + image.class + "','" + image.alt + "'" +')" onclick="rotateImage(event, this)" title="' +
+        appdata.imageTooltip + '"/></div>'
+};
+/* --- */
 
 
 export const uuidv4 = () => {
@@ -87,7 +95,6 @@ export const uuidv4 = () => {
         return v.toString(16);
     });
 };
-
 
 
 /* date & number formatting */
@@ -148,5 +155,3 @@ export var FingerprintReader = function(){
 
     return FingerprintReader;
 }();
-
-/* --- */

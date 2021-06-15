@@ -51,7 +51,10 @@ export var PartyFormCtrl = {
 
     /* --- */
     resetPartyForm: (keepSearch) => {
-        if (!keepSearch) { $$('pf:party_search').setValue(null); }
+        if (!keepSearch) {
+            $$('pf:party_search').setValue(null);
+            $$('pf:search_list').getList().clearAll();
+        }
         $$('apv:party_form').clear();
         $$('apv:party_form').clearValidation();
 

@@ -69,7 +69,7 @@ const infoPanel = {
                         type: 'text',
                         name: 'ovw:details_rigthtype',
                         id: 'ovw:details_rigthtype',
-                        label: __('Right type')
+                        label: __('Right Type')
                     },{
                         type: 'text',
                         name: 'ovw:details_physicalid',

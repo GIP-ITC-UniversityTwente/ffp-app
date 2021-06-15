@@ -240,12 +240,11 @@ div.editable_input div.webix_el_box div.webix_inp_static {
     transform: rotate(0deg);
 }
 .rotate-90 {
-    -webkit-transform:rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    object-fit: contain;
+    -webkit-transform:rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 .rotate-180 {
     -webkit-transform:rotate(180deg);
@@ -255,11 +254,11 @@ div.editable_input div.webix_el_box div.webix_inp_static {
     transform: rotate(180deg);
 }
 .rotate-270 {
-    -webkit-transform:rotate(-270deg);
-    -moz-transform: rotate(-270deg);
-    -ms-transform: rotate(-270deg);
-    -o-transform: rotate(-270deg);
-    transform: rotate(-270deg);
+    -webkit-transform:rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 
  /*- -------------------------------------
@@ -465,4 +464,24 @@ div.editable_input div.webix_el_box div.webix_inp_static {
 .srid_value .webix_property_value, .srid_value input {
     color: #B22222;
     font-style: oblique;
+}
+
+.attachments_list {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 90%;
+    max-width: 90%;
+    position: relative;
+    top: 50%;
+    width: auto;
+    height: auto;
+    transform: translateY(-50%);
+}
+
+.flex_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

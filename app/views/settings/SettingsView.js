@@ -64,7 +64,9 @@ const params_form = {
             onLabel: `${__('Disconnect')}...`,
             onIcon: 'mdi mdi-lan-disconnect',
             width: 160,
-            click: function(){SettingsCtrl.checkConnection(this.getValue() == 0 ? true : false)},
+            click: function(){
+                SettingsCtrl.checkConnection(this.getValue() == 0 ? true : false)
+            },
             on: {
                 onAfterRender: () => SettingsCtrl.initConnectionForm()
             }

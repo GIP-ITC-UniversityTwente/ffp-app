@@ -21,7 +21,7 @@ const partyView = {
             },
             elements:[{
                 view: 'text',
-                label: __('Id Number') + ':'
+                label: __('ID Number') + ':'
             },{
                 view: 'text',
                 label: __('Date of Birth') + ':'
@@ -43,8 +43,6 @@ const partyView = {
         }]
     }]
 };
-
-tp = partyView
 
 
 export var InquieriesView = {
@@ -244,7 +242,7 @@ export var InquieriesView = {
                             }
                         }
                     },{
-                        header: 'Right Atachements',
+                        header: 'Right Attachments',
                         collapsed: true,
                         body: {
                             cols:[{

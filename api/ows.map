@@ -165,9 +165,9 @@ MAP
         CLASS
             NAME "spatialunit"
             STYLE
-                COLOR "#ffebcd"
-                OUTLINECOLOR 80 80 80
-                WIDTH 1
+                # COLOR "#ffebcd"
+                OUTLINECOLOR 0 255 180
+                WIDTH 3
             END
         END
     END #----- crt_spatialunit layer -----
@@ -416,7 +416,7 @@ MAP
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
         DATA 'ogc_geom FROM
-                (SELECT objectid AS ogc_id, geom AS ogc_geom
+                (SELECT objectid AS ogc_id, array_to_json(physical_id) as physical_id, geom AS ogc_geom
                   FROM %SCHEMA%.spatialunit WHERE objectid IN (%SUIDS%))
               AS query USING UNIQUE ogc_id USING SRID=4326'
       #---

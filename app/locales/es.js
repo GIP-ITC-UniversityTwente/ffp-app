@@ -25,6 +25,7 @@ export default {
         'Sign' : 'Firmar',
         'Status' : 'Estado',
         'check' : 'check',
+        'Rotate' : 'Rotar',
 
 
     /* party */
@@ -39,6 +40,8 @@ export default {
         'Neighbours' : 'Colindantes',
         'Neighbour' : 'Colindante',
         'Neighbour Name' : 'Nombre del Colindante',
+        'Civil Status' : "Estado Civil",
+        'Telephone Number' : 'Número de Telefono',
 
 
     /* party form */
@@ -150,7 +153,7 @@ export default {
         'Area aprox.' : 'Area aprox.',
         'Landuse' : 'Uso de la Tierra',
         'Surveyed on' : 'Levantado el',
-        'Right type' : 'Tipo de Derecho',
+        'Right Type' : 'Tipo de Derecho',
         'Physical ID' : 'Cedula Catastral',
         'Legal ID' : 'Matricula',
         'Rightholders' : 'Interesados',
@@ -170,14 +173,13 @@ export default {
         // 'Overlaps' : 'Traslapos',
 
 
-    /* dashboard */
+    /* Dashboard */
         'Hectares<br />Covered' : 'Hectáreas<br />Cubiertas',
         'Square Meters<br />Covered' : 'Metros Cuadrados<br />Cubiertos',
         'Spatialunits<br />Surveyed' : 'Unidades Espaciales<br />Levantadas',
         'Rightholders<br />Registered' : 'Interesados<br />Registrados',
         'Volume of Data Processed' : 'Volumen de Datos Procesados',
         'Gender Distribution' : 'Distribución de Genero',
-        'Boundaries Status' : 'Estado de los Linderos',
         'Pending' : 'Pendiente',
         'In Progress' : 'En Proceso',
         'Approved' : 'Aprobado',
@@ -200,6 +202,26 @@ export default {
         'Observations' : 'Observaciones',
         'Disclaimer' : 'Disclaimer',
         'Certificates' : 'Actas',
+        'Activate Map' : 'Activar Mapa',
+        'Return to Form' : 'Activar Formulario',
+        '100k Tiles' : '1:100000',
+        'Address/Label' : 'Dirección/Nombre',
+
+
+    /* Inquieries View */
+        'Cadastral Identifier' : 'Nómero Catastral',
+        'Filter' : 'Filtrar',
+        'Parties' : 'Interesados',
+        'Report' : 'Reporte',
+        'Inquieries' : 'Consultas',
+        'Spatialunit Type' : 'Tipo Unidad Espacial',
+        'Party Attachments' : 'Anexos de Interesados',
+        'Right Attachments' : 'Anexos del Derecho',
+        'New Search' : 'Nueva Busqueda',
+        'Housing Subsidy' : 'Subsidio de Vivienda',
+        'Owns Other Properties' : 'Tiene Otras Propiedades',
+        'Restore Form' : 'Ver Formulario',
+        'Focus Map' : 'Enfocar Mapa',
 
 
     /* Messages */
@@ -228,5 +250,6 @@ export default {
         'Please select only one spatialunit' : 'Seleccione solo una unidad espacial',
 
         'The changes have been saved...' : 'Los cambios han sido salvados...',
-        'There are unsaved changes. Are you sure you want to cancel?' : 'Han habido cambios. Esta seguro de querer cancelar?'
+        'There are unsaved changes. Are you sure you want to cancel?' : 'Han habido cambios. Esta seguro de querer cancelar?',
+        'View Image' : 'Ver Imagen'
 };

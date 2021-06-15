@@ -123,7 +123,7 @@ const figuresRow = {
         css: 'dsh_div',
         rows: [{
             css: { background: '#E8F4FA' },
-            template: '<div style="width:100%;text-align:center"><b>' + __('Boundaries Status') + ' (%)</b></div>',
+            template: '<div style="width:100%;text-align:center"><b>' + __('Boundary Status') + ' (%)</b></div>',
             height:25
         },{
             view: 'chart',

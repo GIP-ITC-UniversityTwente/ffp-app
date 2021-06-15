@@ -25,6 +25,7 @@ export default {
         'Sign' : 'Sign',
         'Status' : 'Status',
         'check' : 'check',
+        'Rotate' : 'Rotate',
 
 
     /* party */
@@ -39,6 +40,8 @@ export default {
         'Neighbours' : 'Neighbours',
         'Neighbour' : 'Neighbour',
         'Neighbour Name' : 'Neighbour Name',
+        'Civil Status' : 'Civil Status',
+        'Telephone Number' : 'Telephone Number',
 
 
     /* party form */
@@ -151,7 +154,7 @@ export default {
         'Area aprox.' : 'Area aprox.',
         'Landuse' : 'Landuse',
         'Surveyed on' : 'Surveyed on',
-        'Right type' : 'Right type',
+        'Right Type' : 'Right Type',
         'Physical ID' : 'Physical ID',
         'Legal ID' : 'Legal ID',
         'Rightholders' : 'Rightholders',
@@ -170,14 +173,13 @@ export default {
         'With Title' : 'With Title',
 
 
-    /* dashboard */
+    /* Dashboard */
         'Hectares<br />Covered' : 'Hectares<br />Covered',
         'Square Meters<br />Covered' : 'Square Meters<br />Covered',
         'Spatialunits<br />Surveyed' : 'Spatialunits<br />Surveyed',
         'Rightholders<br />Registered' : 'Rightholders<br />Registered',
         'Volume of Data Processed' : 'Volume of Data Processed',
         'Gender Distribution' : 'Gender Distribution',
-        'Boundaries Status' : 'Boundaries Status',
         'Pending' : 'Pending',
         'In Progress' : 'In Progress',
         'Approved' : 'Approved',
@@ -200,6 +202,26 @@ export default {
         'Observations' : 'Observations',
         'Disclaimer' : 'Disclaimer',
         'Certificates' : 'Certificates',
+        'Activate Map' : 'Activate Map',
+        'Return to Form' : 'Return to Form',
+        '100k Tiles' : '100k Tiles',
+        'Address/Label' : 'Address/Label',
+        'Restore Form' : 'Restore Form',
+        'Focus Map' : 'Focus Map',
+
+
+    /* Inquieries View */
+        'Cadastral Identifier' : 'Cadastral Identifier',
+        'Filter' : 'Filter',
+        'Parties' : 'Parties',
+        'Report' : 'Report',
+        'Inquieries' : 'Inquieries',
+        'Spatialunit Type' : 'Spatialunit Type',
+        'Party Attachments' : 'Party Attachments',
+        'Right Attachments' : 'Right Attachments',
+        'New Search' : 'New Search',
+        'Housing Subsidy' : 'Housing Subsidy',
+        'Owns Other Properties' : 'Owns Other Properties',
 
 
     /* Messages */
@@ -228,6 +250,7 @@ export default {
         'Please select only one spatialunit' : 'Please select only one spatialunit',
 
         'The changes have been saved...' : 'The changes have been saved...',
-        'There are unsaved changes. Are you sure you want to cancel?' : 'There are unsaved changes. Are you sure you want to cancel?'
+        'There are unsaved changes. Are you sure you want to cancel?' : 'There are unsaved changes. Are you sure you want to cancel?',
+        'View Image' : 'View Image'
 
 };

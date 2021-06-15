@@ -40,7 +40,7 @@ webix.Date.startOnMonday = true;
 }
 
 appdata.sridTooltip = __('Value calculated using') + ' SRID: <span class="srid">' + appdata.srid + '</span>';
-appdata.imageTooltip = 'ctrl+click &rarr; ' + __('rotate') + '\ndblclick &rarr; ' + __('zoom in');
+appdata.imageTooltip = 'Ctrl+Click &rarr; ' + __('Rotate') + '\nDouble-Click &rarr; ' + __('View Image');
 
 /* retrieves current language choice from the localstorage */
 appdata.lang = localStorage.getItem('appLang') || appdata.lang;

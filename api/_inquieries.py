@@ -31,7 +31,7 @@ def getReport(objectid):
     sql_code = ("""
         SELECT objectid AS spatialunit_id, spatialunit_name AS address, landuse_description AS notes, legal_id,
             physical_id, round(st_area(st_transform(geom,3116))::numeric,2)::varchar AS area_m2, spatialunit_type,
-            globalid
+            globalid, ('{"type": "Feature", "geometry": ' || ST_AsGeoJSON(ST_Transform(geom,3857)) || '}')::json as geometry
         FROM spatialunit
         WHERE objectid = %s;
     """ % (objectid))
@@ -42,8 +42,25 @@ def getReport(objectid):
         pg_cursor.close()
         return response
     else:
-        result = json.dumps(query['records'])
+        result = json.dumps(query['records'][0])
         response += '"su_details" : ' + result
+
+    #-----
+
+    sql_code = ("""
+        SELECT string_agg(DISTINCT predio_vecino::text, ',') AS list
+        FROM v_firma_colinda_todos
+        WHERE predio = %s;
+    """ % objectid)
+
+    query = db_query(pg_cursor, sql_code)
+    if query['success'] == False:
+        response = err_message(query['message'])
+        pg_cursor.close()
+        return response
+    else:
+        result = json.dumps(query['records'][0])
+        response += ', "neighbours" : ' + result
 
     #-----
 

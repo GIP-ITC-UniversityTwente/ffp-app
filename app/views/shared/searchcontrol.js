@@ -34,7 +34,6 @@ export const AddSearchControl = (navMap, prefix, searchFunction) => {
                     },
                     on: {
                         onHide: function(){
-                            tp = navMap;
                             var selection = $$(prefix + ':search_combo').getValue();
                             if (selection.toString().length > 0) {
                                 var record = this.getList().getItem(selection);

@@ -78,9 +78,13 @@ export var NavView = {
                         }
                         if (prev == 'approval-cnt'){
                             if ($$('apv:layer_switcher'))
-                                if ($$('apv:layer_switcher').isVisible())
-                                    $$('apv:layer_switcher').hide();
+                            if ($$('apv:layer_switcher').isVisible())
+                            $$('apv:layer_switcher').hide();
                             $$('pf:search_list').hide();
+                        }
+                        if (prev == 'inquieries-cnt'){
+                            if ($$('inq:search_list').isVisible())
+                                $$('inq:search_list').hide();
                         }
                     }
                 }

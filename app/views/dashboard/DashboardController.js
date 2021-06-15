@@ -65,6 +65,7 @@ export var DashboardCtrl = {
                 text: __('Some values were recalculated to reflect the SRID change'),
                 expire: 2500
              });
+             DashboardCtrl.sridChanged = false;
         }
     },
 
