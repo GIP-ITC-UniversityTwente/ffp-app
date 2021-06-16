@@ -289,17 +289,12 @@ export var InquieriesView = {
                             bottomPadding: 12
                         },{
                             view: 'text',
-                            label: __('Area aprox.:') + '<sup class="srid">*</sup>',
+                            label: __('Area aprox.') + ':<sup class="srid">*</sup>',
                             css: 'srid_value',
                             name: 'inq:details_area',
                             id: 'inq:details_area',
-                            // tooltip: appdata.sridTooltip
                             tooltip: () => {
-                            //     console.log(record)
-                            //     // if (record.id == 'inq:details_area')
-                                    return appdata.sridTooltip;
-                            //     // else
-                            //     //     return '';
+                                return appdata.sridTooltip;
                             }
 
                         },{
