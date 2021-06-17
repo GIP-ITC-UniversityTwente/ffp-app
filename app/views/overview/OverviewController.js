@@ -45,8 +45,8 @@ export var OverviewCtrl = {
         });
 
         { /* mosaic layer */
-            this.mosaicLayer = new ol.layer.Image({
-                source: new ol.source.ImageWMS(),
+            this.mosaicLayer = new ol.layer.Tile({
+                source: new ol.source.TileWMS(),
                 title: 'Mosaic',
                 name: 'mosaic',
                 switcher: true,
@@ -196,7 +196,7 @@ export var OverviewCtrl = {
 
 
             if (appdata.mosaic){
-                this.mosaicLayer.setSource(new ol.source.ImageWMS({
+                this.mosaicLayer.setSource(new ol.source.TileWMS({
                     url: appdata.wmsUrl,
                     params: {
                         'LAYERS': 'mosaic',

@@ -18,10 +18,6 @@ export var SettingsCtrl = {
         let form = $$('app:dbform');
         let dbparams = appdata.dbparams;
 
-                    {// temp
-                        appdata.dbparams.database = 'ffp_v9_vh';
-                    }// temp
-
         form.setValues({
             'dbconn:server': dbparams.host,
             'dbconn:port': dbparams.port,
@@ -129,7 +125,7 @@ export var SettingsCtrl = {
             webix.confirm({
                 title: 'Warning',
                 ok: __('Yes'), cancel: __('No'),
-                text: __('This axction will reset the application.<br />Are you sure<br />you want to disconnect?')
+                text: __('This action will reset the application.<br />Are you sure<br />you want to disconnect?')
             }).then(() => {
                 $$('app:srid_form').disable();
                 $$('nav:sidebar').disable();

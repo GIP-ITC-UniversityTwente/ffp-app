@@ -10,10 +10,12 @@ Source DB file (2020-09-25_TrainingDataset_processed.backup)
 - Initialize the database elements needed by the App by executing the following script:
 	./api/init_db/app_init.sql
 
+- Update the type of the 'physical_id' field (existing values will be formated as an array)
+    ./api/init_db/app_init.sql
 
 -------
 
-Create the necesary Apache configuration files (httpd_###.conf)
+Create the necesary Apache configuration files (httpd_###.conf) based on the chosen folder names for the source files.
 
 -------
 

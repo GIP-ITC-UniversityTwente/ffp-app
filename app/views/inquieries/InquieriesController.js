@@ -193,6 +193,18 @@ export var InquieriesCtrl = {
             InquieriesCtrl.hoverInteraction.getFeatures().clear();
         });
 
+        if (appdata.mosaic){
+            this.mosaicLayer.setSource(new ol.source.TileWMS({
+                url: appdata.wmsUrl,
+                params: {
+                    'LAYERS': 'mosaic',
+                    'TILED': true,
+                    'MOSAIC': 'mosaic_' + appdata.dbparams.database.toLowerCase()
+                }
+            }));
+            this.mosaicLayer.setVisible(true);
+        }
+
         this.mapRendered = true;
     },
 

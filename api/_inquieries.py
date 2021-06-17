@@ -160,7 +160,7 @@ def search(searchString):
         WITH l AS (
             SELECT unnest(physical_id) AS physical_id, count(*),
                 json_agg(objectid ORDER BY objectid) AS oids
-            FROM inspection.spatialunit
+            FROM spatialunit
             GROUP BY 1
         )
         SELECT physical_id, count, oids
@@ -189,8 +189,8 @@ def getList(idList):
         SELECT s.objectid, s.spatialunit_name, r.right_type,
 	           json_agg(p.first_name ||' '|| p.last_name) as parties
         FROM spatialunit AS s
-            JOIN inspection.right AS r ON s.globalid = r.spatialunit_id
-            JOIN inspection.party AS p ON r.globalid = p.right_id
+            LEFT JOIN inspection.right AS r ON s.globalid = r.spatialunit_id
+            LEFT JOIN inspection.party AS p ON r.globalid = p.right_id
         WHERE s.objectid in (%s)
         GROUP BY 1,2,3;
     """ % (idList))

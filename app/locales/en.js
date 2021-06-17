@@ -237,6 +237,9 @@ export default {
         'Switch layers on & off' : 'Switch layers visibility',
         'Some values were recalculated to reflect the SRID change'  : 'Some values were recalculated to reflect the SRID change',
 
+        'This action will reset the application.<br />Are you sure<br />you want to disconnect?' :
+            'This action will reset the application.<br />Are you sure<br />you want to disconnect?',
+
         'One Face Photo is needed to continue...' : 'One Face Photo is needed to continue...',
         'One ID Card Photo is needed to continue...' : 'One ID Photo is needed to continue...',
 
