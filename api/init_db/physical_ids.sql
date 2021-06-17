@@ -1,5 +1,5 @@
 
-
+BEGIN;
 
 	ALTER TABLE inspection.spatialunit
     ADD COLUMN phy_ids character varying;
@@ -23,3 +23,5 @@
 	
 	ALTER TABLE inspection.spatialunit 
 	DROP COLUMN phy_ids;
+	
+END;
