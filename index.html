@@ -34,5 +34,14 @@
     </head>
     <body>
         <!-- Fit for Purpose - Public Inspection App -->
+
+        <script>
+            window.onbeforeunload = function(event) {
+                // console.log('unloading');
+                event.returnValue = "You are not going anywhere...";
+                return "You are not going anywhere..";
+            };
+        </script>
+
     </body>
 </html>
