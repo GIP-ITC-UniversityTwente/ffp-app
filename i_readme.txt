@@ -11,7 +11,7 @@ Source DB file (2020-09-25_TrainingDataset_processed.backup)
 	./api/init_db/app_init.sql
 
 - Update the type of the 'physical_id' field (existing values will be formated as an array)
-    ./api/init_db/app_init.sql
+    ./api/init_db/physical_ids.sql
 
 -------
 
