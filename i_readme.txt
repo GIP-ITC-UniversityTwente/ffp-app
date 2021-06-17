@@ -1,5 +1,6 @@
 FFP APP
 
+
 Source DB file (2020-09-25_TrainingDataset_processed.backup)
 
 - Database configuration:
@@ -8,6 +9,11 @@ Source DB file (2020-09-25_TrainingDataset_processed.backup)
 
 - Initialize the database elements needed by the App by executing the following script:
 	./api/init_db/app_init.sql
+
+
+-------
+
+Create the necesary Apache configuration files (httpd_###.conf)
 
 -------
 

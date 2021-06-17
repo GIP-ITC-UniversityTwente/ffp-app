@@ -8,6 +8,9 @@
 
 ### Requirements:
 
+* Apache
+* MapServer
+* Python 3
 * Webix v8
 * OpenLayers v6.3.0
 * d3js v5.12.0
