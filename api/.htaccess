@@ -1,4 +1,4 @@
-Options +ExecCGI
+Options +ExecCGI -Indexes
 AddHandler cgi-script .py
 RewriteEngine on
 
@@ -20,3 +20,13 @@ RewriteRule ^rights/(.*)/$ ./_rights.py?operation=$1 [QSA,L]
 RewriteRule ^certificate/$ ./_certificates.py?operation=get [QSA,L]
 
 RewriteRule ^inquieries/(.*)/$ ./_inquieries.py?operation=$1 [QSA,L]
+
+<Files ~ "params.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ~ ".params">
+    Order allow,deny
+    Deny from all
+</Files>
