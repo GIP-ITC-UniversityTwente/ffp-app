@@ -160,8 +160,6 @@ def partySpatialunits(id_number):
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
 
-    # id_number = params.getvalue('id_number')
-
     sql_code = ("""
         SELECT 'Feature' as type,
             s.objectid AS ogc_id,

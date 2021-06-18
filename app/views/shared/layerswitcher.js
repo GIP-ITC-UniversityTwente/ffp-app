@@ -5,10 +5,8 @@
 
 export const AddSwitcherControl = (navMap, prefix) => {
 
-    // let excludeList = ['spatialunits', 'basemap', 'spatialunit_concepts', 'timelinewms'];
     let elements = [];
     for (let layer of navMap.getLayers().getArray()){
-        // if (!excludeList.includes(layer.getProperties().name)){
         if (layer.getProperties().switcher){
             elements.push({
                 view: 'checkbox',
@@ -31,7 +29,6 @@ export const AddSwitcherControl = (navMap, prefix) => {
         view: 'popup',
         id: prefix + ':layer_switcher',
         css: 'switcher_popup',
-        // disabled: true,
         width: 190,
         height: 300,
         body:{

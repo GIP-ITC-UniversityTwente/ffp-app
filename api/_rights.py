@@ -59,10 +59,10 @@ def getrightdetails():
     #-----
 
     sql_code = ("""
-        select r.globalid as right_id, r.right_type, r.right_source,
-            r.time_spec_start::varchar as valid_since, description
-        from inspection.spatialunit as s join inspection.right as r on s.globalid = r.spatialunit_id
-        where s.objectid = %s
+        SELECT r.globalid AS right_id, r.right_type, r.right_source,
+            r.time_spec_start::varchar AS valid_since, description
+        FROM spatialunit AS s JOIN "right" AS r ON s.globalid = r.spatialunit_id
+        WHERE s.objectid = %s
     """ % (suId))
 
     query = db_query(pg_cursor, sql_code)

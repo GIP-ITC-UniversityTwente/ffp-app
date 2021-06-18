@@ -14,7 +14,6 @@ MAP
         "init=epsg:4326"
     END
   #---
-    # EXTENT -90000 290000 430000 630000
     EXTENT -80.72 -5.13 -67.21 13.47
 
 #----- Start of WEB DEFINITION ------
@@ -398,7 +397,6 @@ MAP
                 WIDTH 8
                 OUTLINECOLOR "#a633cb88"
                 LINEJOIN miter
-                # LINECAP butt
             END
         END
     END #----- conflicts layer -----
@@ -451,12 +449,10 @@ MAP
         CLASS
             NAME "spatialunit"
             STYLE
-                # OUTLINECOLOR 80 80 80
                 OUTLINECOLOR 255  105  180
                 WIDTH 2
             END
         END
-        # OPACITY 90
     END #----- neighbours layer -----
 
 
@@ -852,15 +848,9 @@ MAP
         CLASS
             NAME "Path"
             EXPRESSION {6}
-            #   STYLE
-            #     WIDTH 2
-            #     OUTLINEWIDTH 1
-            #     OUTLINECOLOR 103 181 157  # green
-            #   END
               STYLE
                 WIDTH 0.5
                 COLOR  153 111 57 # brown
-                # COLOR  238 225 226 # pink
                 LINECAP butt
                 PATTERN 8 6 END
               END

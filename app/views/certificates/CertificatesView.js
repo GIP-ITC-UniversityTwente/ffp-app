@@ -117,10 +117,8 @@ const paramsForm = {
                     dataFeed: 'api/spatialunit/search/?' + appdata.querystring,
                     on: {
                         onBeforeLoad: () => {
-                            // if ($$('crt:search').getValue().length < 2)
-                            //     return false;
+
                         },
-                        // onAfterSelect: (value) => SettingsCtrl.onSridSelect(value)
                         onBeforeSelect: (value) => {
                             return false;
                         },
@@ -149,8 +147,6 @@ const paramsForm = {
             },
             css: 'crt_field_group',
             bottomPadding: 8
-        // },{
-        //     css: 'crt_field_group'
         },{
             cols:[{
                 view: 'checkbox',
@@ -222,7 +218,6 @@ const paramsForm = {
                 bottomPadding: -5,
                 disabled: !appdata.basedata.roads,
                 click: (id) => {
-                    //  let visible = $$(id).getValue == 1 ? true : false;
                     CertificatesCtrl.roadsLayer.setVisible(
                         $$(id).getValue() == 1 ? true : false
                     )
@@ -234,7 +229,6 @@ const paramsForm = {
                 label: '',
                 labelRight: __('100k Tiles'),
                 bottomPadding: -5,
-                // disabled: !appdata.basedata.rivers,
                 click: (id) => {
                     CertificatesCtrl.cartoLayer.setVisible(
                         $$(id).getValue() == 1 ? true : false
@@ -413,7 +407,7 @@ export var CertificatesView = {
                 cols:[{
                     css: 'print_area'
                 },{
-                    width: 850, // 37.7 * 21.6 + 17(sroll bar)
+                    width: 850, /* 37.7 * 21.6 + 17(sroll bar) */
                     minWidth: 850,
                     id: 'crt:pages',
                     type: 'clean',
@@ -457,21 +451,6 @@ export var CertificatesView = {
                                         rows: [{
                                             template: '&nbsp;'
                                         }]
-                                        // rows: [{
-                                        //     type: 'clean',
-                                        //     cols: [{
-                                        //         template: 'signatures'
-                                        //     },{
-                                        //         template: 'signatures'
-                                        //     }]
-                                        // },{
-                                        //     type: 'clean',
-                                        //     cols: [{
-                                        //         template: 'signatures'
-                                        //     },{
-                                        //         template: 'signatures'
-                                        //     }]
-                                        // }]
                                     }]
                                 },
                                     pageFooter
@@ -482,7 +461,6 @@ export var CertificatesView = {
                         id: 'crt:page_2',
                         type: 'form',
                         hidden: true,
-                        // height: 27.4 * 37.7,
                         css: 'print_area',
                         cols:[{
                             id: 'crt:page_2-cnt',

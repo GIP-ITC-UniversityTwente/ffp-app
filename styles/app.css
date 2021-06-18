@@ -1,5 +1,5 @@
 /*- -------------------------------------
-    Layout
+    App Layout
  ------------------------------------ -*/
 
 .applogo {
@@ -49,10 +49,6 @@ textarea[readonly] {
     cursor: default;
 }
 
-/* textarea[readonly] {
-    border: none;
-} */
-
 .webix_message_area {
     position: fixed;
     top: 50% !important;
@@ -75,18 +71,6 @@ textarea[readonly] {
     border-bottom: solid 1px #eee !important;
 }
 
-/* .dropdown .webix_el_box::before {
-    position: absolute;
-    content: " \25BE";
-    font-size: 12pt;
-    top: 16px;
-    right: 10px;
-    height: 20px;
-    width: 20px;
-    color: #94a1b3;
-} */
-
-
 .dropdown .webix_el_box::after {
     font-family: "Webix Material Icons";
     content: " \F027";
@@ -104,10 +88,6 @@ textarea[readonly] {
 .gui_panel {
     background-color: #fff;
 }
-
-/* .label_toolbar {
-    background-color: #ececec;
-} */
 
 .toolbar_button div.webix_el_box button {
     border-radius: 5px;
@@ -140,7 +120,6 @@ textarea[readonly] {
 .webix_nav_button_side.webix_nav_button_next .webix_nav_button_inner,
 .webix_nav_button_side.webix_nav_button_prev .webix_nav_button_inner {
     background-color: transparent;
-    /* color: #1ca1c1; */
     color: transparent;
 }
 
@@ -148,7 +127,6 @@ textarea[readonly] {
 .webix_nav_button_side.webix_nav_button_prev .webix_nav_button_inner:hover {
     background-color: transparent;
     color: #3dbddd;
-    /* color: #2cdee4; */
 }
 
 
@@ -159,7 +137,6 @@ textarea[readonly] {
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* background: #fff6e8; */
 }
 
 .party_attachment, #signature_image, #fingerprint_image, #fgp_image {
@@ -272,13 +249,11 @@ div.editable_input div.webix_el_box div.webix_inp_static {
     text-align: right;
     font-size: 16pt;
     font-weight: bold;
-    /* text-shadow: 2px 2px 4px #8b8b8b; */
 }
 .dashboard-left {
     float: left;
     margin-top: 30px;
     padding-left: 20px;
-    /* color: rgba(255, 255, 255, 0.3); */
 }
 
 .dsh_div, .webix_view.dsh_div {
@@ -383,53 +358,11 @@ div.editable_input div.webix_el_box div.webix_inp_static {
 }
 
 .camera, .camera video, .camera img {
-    /* padding: 5px; */
-    /* margin: 5px; */
-
     position: absolute;
     max-height: 220px;
     text-align: center;
     left: 13px;
-
-    /* position: absolute;
-    width: 420px;
-    height: 100%;
-    max-height: 240px; */
-
-    /* text-align: center;
-    max-height: 80%;
-    /* max-width: 90%; */
-    /* width: auto;
-    height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto; */
-
 }
-
-
-
-/* .camera img {
-    display: block;
-    margin: auto;
-    max-width: 420px;
-    height: 100%;
-    max-height: 240px;
-}
-
-.camera video {
-    border: solid 1px #ccc;
-    background-color: #eee;
-}
-
-#icw-photo {
-    text-align: center;
-    display: block;
-} */
-
 
 
 .webixtype_base.signButton, .webixtype_base.checkButton {

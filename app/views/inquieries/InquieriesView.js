@@ -53,49 +53,13 @@ const partyView = {
 export var InquieriesView = {
     id: 'inquieries-cnt',
     rows:[{
-    //     view: 'toolbar',
-    //     // css: { background: '#fff6e8' },
-    //     elements: [{},{
-    //         view: "text",
-    //         id: 'inq:search',
-    //         width: 450,
-    //         labelWidth: 150,
-    //         labelAlign: 'right',
-    //         label: __('Cadastral Identifier') + ':',
-    //         placeholder: __('Search...'),
-    //         css: 'dropdown',
-    //         suggest: {
-    //             id: 'inq:search_list',
-    //             // fitMaster: false,
-    //             // width: 450,
-    //             textValue: 'physical_id',
-    //             body: {
-    //                 template: '#physical_id# &rarr; #count#x ',
-    //                 dataFeed: 'api/inquieries/search/?' + appdata.querystring
-    //             }
-    //         }
-    //     },{
-    //         width: 20
-    //     },{
-    //         view: 'button',
-    //         width: 80,
-    //         css: 'toolbar_button ',
-    //         label: __('Load'),
-    //         tooltip: 'Load',
-    //         click: InquieriesCtrl.onRecordsLoad
-    //     },{}]
-    // },{
-    //     height: 5
-    // },{
         view:"multiview",
         id: 'inq:container',
         animate: false,
         cells: [{
             id:'inq:list',
-            // header: __('List of Spatialunits'),
             rows: [{
                 view: 'toolbar',
-                // css: { background: '#fff6e8' },
                 elements: [{},{
                     view: "text",
                     id: 'inq:search',
@@ -108,7 +72,6 @@ export var InquieriesView = {
                     suggest: {
                         id: 'inq:search_list',
                         // fitMaster: false,
-                        // width: 450,
                         textValue: 'physical_id',
                         body: {
                             template: '#physical_id# &rarr; #count#x ',
@@ -127,21 +90,12 @@ export var InquieriesView = {
                             this.getInputNode().select();
                         },
                         onItemClick: function(){
-                            // //link suggest to the input
+                            /* link suggest to the input */
                             $$(this.config.suggest).config.master = this;
-                            //show
+                            /* show */
                             $$(this.config.suggest).show(this.$view.getElementsByTagName('input')[0])
                         }
                     }
-                // },{
-                //     width: 20
-                // },{
-                //     view: 'button',
-                //     width: 80,
-                //     css: 'toolbar_button ',
-                //     label: __('Load'),
-                //     tooltip: 'Load',
-                //     click: InquieriesCtrl.onRecordsLoad
                 },{}]
             },{
                 height: 5
@@ -248,7 +202,6 @@ export var InquieriesView = {
                 cols:[{
                     id: 'inq:leftcol',
                     gravity: 2,
-                    // width: 500,
                     rows: [{
                         view: 'navmap',
                         id: 'inq:navmap',
@@ -343,9 +296,7 @@ export var InquieriesView = {
                                     type: 'form',
                                     id: 'inq:party_cnt',
                                     rows: [
-                                        // partyView,
-                                        // partyView,
-                                        // partyView
+
                                     ]
                                 },{
                                 }]
@@ -358,34 +309,20 @@ export var InquieriesView = {
                         body: {
                             cols:[{
                                 width: 150,
-                                // rows:[{
-                                    view: 'dataview',
-                                    id: 'inq:rightAtt_idx',
-                                    template: imgListTpl,
-                                    select: true,
-                                    type:{
-                                        width: 140,
-                                        height: 100
-                                    },
-                                    data: [],
-                                    on: {
-                                        onItemClick: (id) => {
-                                            $$(id).show();
-                                        }
+                                view: 'dataview',
+                                id: 'inq:rightAtt_idx',
+                                template: imgListTpl,
+                                select: true,
+                                type:{
+                                    width: 140,
+                                    height: 100
+                                },
+                                data: [],
+                                on: {
+                                    onItemClick: (id) => {
+                                        $$(id).show();
                                     }
-                                // },{
-                                //     view: 'toolbar',
-                                //     height: 38,
-                                //     padding: 2,
-                                //     elements: [{},{
-                                //         view: 'button',
-                                //         type: 'icon',
-                                //         width: 40,
-                                //         css: 'toolbar_button rotate',
-                                //         icon: 'mdi mdi-format-rotate-90',
-                                //         tooltip: 'Rotate Attachment 90&deg;'
-                                //     },{}]
-                                // }]
+                                }
                             },{
                                 view: 'carousel',
                                 id: 'inq:rightAtt_carrousel',
@@ -400,18 +337,6 @@ export var InquieriesView = {
                                         alt: ''
                                     }
                                 }]
-                                // scroll: 'auto',
-                                // body: {
-                                //     layout: 'template',
-                                //     css: 'right_attachment_cnt',
-                                //     template:
-                                //         `<img id="inq:right_att"
-                                //             onclick="$$('inquieries-cnt').config.getController().onImageClick(this)"
-                                //             class="expandable_image"
-                                //             expanded="false"
-                                //             src="http://localhost/ffp/consultas_v1/api/attachment.py?database=ffp_snr&att_class=right&globalid={FF6CA138-58A9-4A36-A542-12CBEB5C5C55}"
-                                //         />`
-                                // }
                             }]
                         }
                     }]

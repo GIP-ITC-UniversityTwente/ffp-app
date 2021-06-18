@@ -31,7 +31,7 @@ webix.ready(function(){
 const renderApp = (response) => {
     appdata.dbparams = response.params;
     appdata.dbparams.database = localStorage.getItem('appDatabase') || appdata.dbparams.database;
-    // localStorage.clear();
+    // localStorage.clear(); --> decide weather to use it...
 
     appdata.path = response.path;
 
