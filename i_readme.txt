@@ -15,7 +15,21 @@ Source DB file (2020-09-25_TrainingDataset_processed.backup)
 
 -------
 
-Create the necesary Apache configuration files (httpd_###.conf) based on the chosen folder names for the source files.
+Create the necesary Apache configuration files (httpd_###.conf) based on the chosen
+folder names for the source files.
+
+    For example 'httpd_ffp.conf' :
+
+        Alias /ffp/ "C:/ffp/"
+
+        <Directory "C:/ffp/">
+            AllowOverride All
+            Options Indexes FollowSymLinks Multiviews ExecCGI
+            AddHandler cgi-script .py
+            Order allow,deny
+            Allow from all
+            Require all granted
+        </Directory>
 
 -------
 
