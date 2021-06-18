@@ -21,8 +21,6 @@ export var RightsCtrl = {
         webix.ajax().get('api/rights/details/', {...appdata.dbparams, ...params}).then(function(response){
             if (response.json().success){
 
-                tp = RightsCtrl;
-
                 RightsCtrl.rightData = {...response.json(), ...{
                     newAttachments: false,
                     edited: false,

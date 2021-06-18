@@ -36,7 +36,6 @@ const infoPanel = {
                     },
                     elements: [{
                         type: 'label',
-                        // width: 180,
                         css: 'property_label',
                         label: __('Spatialunit Data')
                     },{
