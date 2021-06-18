@@ -94,11 +94,6 @@ def getSridList():
         FROM spatial_ref_sys
         WHERE srtext LIKE 'PROJCS%'
             AND srid::text LIKE '""" + searchString + """%'"""
-    # sql_code = """
-    #     SELECT srid as id, srid || ' - ' || substring(srtext,'"(.*?)"') AS value
-    #     FROM spatial_ref_sys
-    #     WHERE srtext LIKE 'PROJCS%'
-    #         AND srid::text LIKE '""" + searchString + """%'"""
 
     query = db_query(pg_cursor, sql_code)
     if query['success'] == False:
@@ -236,17 +231,6 @@ else:
         response = err_message(pg['message'])
     else:
         if function == 'checkconnection':
-            # mosaic = Path("../basedata/mosaic_%s.tif" % (params.getvalue('database')))
-            # if mosaic.is_file():
-            #     mosaic = '"mosaic" : true'
-            # else:
-            #     mosaic = '"mosaic" : false'
-
-            # timeline = checkTimeline()
-            # basedata = checkBasedata()
-
-            # response = ("""{"success" : true, "connection" : "OK", %s, %s, %s}"""
-            #            % (mosaic, timeline, basedata))
             response = getAppdataValues()
         elif function == 'sridlist':
             response = getSridList()

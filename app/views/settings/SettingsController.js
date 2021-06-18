@@ -18,13 +18,16 @@ export var SettingsCtrl = {
         let form = $$('app:dbform');
         let dbparams = appdata.dbparams;
 
+                    {// temp
+                        // appdata.dbparams.database = 'ffp_v9_vh';
+                    }// temp
+
         form.setValues({
             'dbconn:server': dbparams.host,
             'dbconn:port': dbparams.port,
             'dbconn:user': dbparams.user,
             'dbconn:schema': dbparams.schema,
             'dbconn:database': dbparams.database
-            // 'dbconn:database': 'ffp_v9_vh'
         });
 
                     {// temp
@@ -161,10 +164,6 @@ export var SettingsCtrl = {
         appdata.querystring = Object.keys(appdata.dbparams).map(key => key + '=' + appdata.dbparams[key]).join('&');
 
         appdata.basedata = response.basedata;
-        // appdata.basedata.tiles100k = response.basedata.tiles100k;
-        // appdata.basedata.roads = response.basedata.roads;
-        // appdata.basedata.rivers = response.basedata.rivers;
-        // appdata.basedata.villages = response.basedata.villages;
 
         let mapFile = 'map=' + appdata.path + '\\ows.map';
         let oswUrl = 'http://' + window.location.hostname + '/cgi-bin/mapserv.exe?';
@@ -185,7 +184,6 @@ export var SettingsCtrl = {
             $$("nav:container").setValue('settings-cnt');
         }
         $$('approval-cnt').config.getController().resetInspectionForms();
-        // $$('approval-cnt').setValue('apv:identification');
 
         if (SettingsCtrl.loadSrid){
             SettingsCtrl.setCurrentSrid();
@@ -221,11 +219,9 @@ export var SettingsCtrl = {
 
     /* --- */
     setCurrentSrid: () => {
-        // $$('app:srid_list').getList().clearAll();
         $$('app:srid_list').getList().load(
             'api/tools/sridlist/?filter[value]=' + appdata.srid + '&' + appdata.querystring
         ).then(() => {
-            // $$('app:srid').setValue($$('app:srid_list').getList().getItem(appdata.srid).text);
             $$('app:srid').setValue(appdata.srid);
             $$('app:srtext').setValue($$('app:srid_list').getList().getItem(appdata.srid).displaytext);
             SettingsCtrl.loadSrid = false;

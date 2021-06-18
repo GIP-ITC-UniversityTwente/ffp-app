@@ -12,12 +12,12 @@ export const mapStyle = {
             if (overflow == null) { overflow = true; }
             var strokeColor, fillColor, textFill, textStroke;
             if (appdata.imageBasemap){
-                strokeColor = '#fff'; //'#0094FF';
+                strokeColor = '#fff';
                 fillColor = 'rgba(255, 255, 255, 0.20)';
                 textFill = '#fff';
                 textStroke = '#000';
             } else {
-                strokeColor = '#8c8cb2'; //'#0094FF';
+                strokeColor = '#8c8cb2';
                 fillColor = 'rgba(50, 50, 50, 0.15)';
                 textFill = '#fff';
                 textStroke = '#666699';
@@ -47,12 +47,12 @@ export const mapStyle = {
             if (overflow == null) { overflow = true; }
             var strokeColor, fillColor, textFill, textStroke;
             if (appdata.imageBasemap){
-                strokeColor = '#fff'; //'#0094FF';
+                strokeColor = '#fff';
                 fillColor = 'rgba(255, 255, 255, 0.20)';
                 textFill = '#fff';
                 textStroke = '#000';
             } else {
-                strokeColor = '#8c8cb2'; //'#0094FF';
+                strokeColor = '#8c8cb2';
                 fillColor = 'rgba(50, 50, 50, 0.15)';
                 textFill = '#fff';
                 textStroke = '#666699';
@@ -267,7 +267,7 @@ export const mapStyle = {
         return function(feature){
             return new ol.style.Style({
                 stroke: new ol.style.Stroke({
-                    color: '#84CDE0', //'#76bdd5'
+                    color: '#84CDE0',
                     width: 1.2
                 }),
                 fill: new ol.style.Fill({
@@ -292,7 +292,7 @@ export const mapStyle = {
         return function(feature){
             return new ol.style.Style({
                 stroke: new ol.style.Stroke({
-                    color: '#A941D8', //'#76bdd5'
+                    color: '#A941D8',
                     width: 3
                 }),
                 fill: new ol.style.Fill({
@@ -357,7 +357,6 @@ export const mapStyle = {
                     font: 'Normal 16px Calibri,sans-serif',
                     overflow: true,
                     wrap: true,
-                    // offsetY: 15,
                     text: feature.get('spatialunit_name'),
                     fill: new ol.style.Fill({color: '#fff'}),
                     stroke: new ol.style.Stroke({color: 'rgb(250, 70, 100)', width: 4}),
@@ -389,9 +388,7 @@ export const mapStyle = {
                     font: 'Oblique 14px Calibri,sans-serif',
                     overflow: true,
                     wrap: true,
-                    // offsetY: 15,
                     text: layerText,
-                    // text: getNeighLabel(feature.get('id')),
                     fill: new ol.style.Fill({color: '#000'}),
                     stroke: new ol.style.Stroke({color: '#fff', width: 4}),
                     rotation: 0

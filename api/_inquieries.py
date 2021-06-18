@@ -189,8 +189,8 @@ def getList(idList):
         SELECT s.objectid, s.spatialunit_name, r.right_type,
 	           json_agg(p.first_name ||' '|| p.last_name) as parties
         FROM spatialunit AS s
-            LEFT JOIN inspection.right AS r ON s.globalid = r.spatialunit_id
-            LEFT JOIN inspection.party AS p ON r.globalid = p.right_id
+            LEFT JOIN "right" AS r ON s.globalid = r.spatialunit_id
+            LEFT JOIN party AS p ON r.globalid = p.right_id
         WHERE s.objectid in (%s)
         GROUP BY 1,2,3;
     """ % (idList))

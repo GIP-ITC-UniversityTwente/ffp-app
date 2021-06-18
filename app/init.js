@@ -47,5 +47,5 @@ appdata.lang = localStorage.getItem('appLang') || appdata.lang;
 
 
                     {// temp
-                        window.tp = null;
+                        // window.tp = null;
                     }// temp

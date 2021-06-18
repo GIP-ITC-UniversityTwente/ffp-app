@@ -8,7 +8,7 @@ Source DB file (2020-09-25_TrainingDataset_processed.backup)
 	The App uses a schema called inspection to access data (no other schema is required)
 
 - Initialize the database elements needed by the App by executing the following script:
-	./api/init_db/app_init.sql
+    ./api/init_db/app_init.sql
 
 - Update the type of the 'physical_id' field (existing values will be formated as an array)
     ./api/init_db/physical_ids.sql

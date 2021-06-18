@@ -42,14 +42,14 @@ export var CertificatesCtrl = {
         this.navMap.getControls().getArray()[1].autoHide_ = false;
 
 
-        {//-----
+        {/*-----*/
             let viewProjection = ol.proj.get('EPSG:3857');
             let projectionExtent = viewProjection.getExtent();
             let size = ol.extent.getWidth(projectionExtent) / 256;
             let resolutions = new Array(18);
             let matrixIds = new Array(18);
             for (var z = 0; z < 18; ++z) {
-                // generate resolutions and matrixIds arrays for this WMTS
+                /* generate resolutions and matrixIds arrays for this WMTS */
                 resolutions[z] = size / Math.pow(2, z);
                 matrixIds[z] = z;
             }
@@ -81,7 +81,7 @@ export var CertificatesCtrl = {
             this.navMap.getLayers().getArray()[0].getSource().setAttributions(
                 'Basemap Tiles &copy; <a href="#">IGAC</a>.'
             );
-        }//-----
+        }/*-----*/
 
         this.graticuleLayer = new ol.layer.Graticule({
             strokeStyle: new ol.style.Stroke({
@@ -121,8 +121,8 @@ export var CertificatesCtrl = {
             name: 'spatialunit',
             style: mapStyle.crt_spatialunit()
         });
-        // this.navMap.addLayer(this.spatialunitLayer)
 
+        /* add multiple layers to the map */
         this.navMap.getLayers().extend([
             this.cartoLayer,
             this.graticuleLayer,
@@ -220,9 +220,6 @@ export var CertificatesCtrl = {
 
         $$('crt:params_form$2').clearValidation();
 
-        // $$('crt:params_form$1').enable();
-        // $$('crt:params_form$2').enable();
-        // webix.html.removeCss($$('crt:navmap').getNode(),'crtmap_interaction');
         $$('crt:map_toggle').setValue(0)
     },
 

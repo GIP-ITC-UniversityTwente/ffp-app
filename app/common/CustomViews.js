@@ -56,9 +56,6 @@ import { basemapURLs } from './basemaps';
 
                     this.navMap.setBasemap = function(basemapURL){
                         var basemapLayer = this.getLayers().getArray()[0]
-                        // if (basemapURL == 'osm') {
-                        //     basemapLayer.setSource(new ol.source.OSM());
-                        // } else
                         if (basemapURL == 'none') {
                             basemapLayer.setSource();
                         } else {
@@ -85,7 +82,6 @@ import { basemapURLs } from './basemaps';
                         },
                         position: function(state){
                             state.top = 50
-                            // state.left = 90
                         }
                     }).show();
 
@@ -121,11 +117,6 @@ import { basemapURLs } from './basemaps';
                         } else {
                             console.log(`No controller available on map view '${this.config.id}'`)
                         }
-                        // if ( this.getParentView().config.getController()){
-                        //     this.getParentView().config.getController()[this.config.readyFunction](this.navMap);
-                        // } else {
-                        //     console.log(`No controller available on the parent view of '${this.config.id}'`);
-                        // }
                     }
                 }
             }
@@ -139,16 +130,6 @@ import { basemapURLs } from './basemaps';
             webix.ui.template.prototype.$setSize.call(this, x,y);
             if (this.navMap) {
                 this.navMap.updateSize();
-                // let rect = $$(this.config.id).getNode().getBoundingClientRect();
-                // console.log(rect.left)
-                // console.log(rect.width)
-                // let parentWidth = this.$width;
-                // let parentLeft = this.$view.getBoundingClientRect().left;
-                // let parentTop = this.$view.getBoundingClientRect().top;
-                // $$(this.config.id + '-mouseposition').define('position', function(state){
-                //     state.top = rect.top + 10,
-                //     state.left = rect.left + rect.width/2 - 105
-                // });
             };
         }
     }, webix.ui.template);

@@ -6,8 +6,6 @@ import { DashboardCtrl } from "./DashboardController";
 import { ConceptPieColor } from "../shared/colors";
 
 
-// let sridTooltip = __('Value calculated using') + ' SRID: <b>' + appdata.srid + '</b>'
-
 const itemsRow = {
     type: 'wide',
     height: 120,

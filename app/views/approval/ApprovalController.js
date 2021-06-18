@@ -79,7 +79,6 @@ export var ApprovalCtrl = {
                         class: 'party',
                         new: false
                     },
-                    // tooltip: __('Double click to see original size'),
                     template: attachmentTemplate,
                     css: 'party_attachment_cnt'
                 });
@@ -187,7 +186,6 @@ export var ApprovalCtrl = {
                         editButton.toggle();
                     } else {
                         webix.message({
-                            // type: 'error',
                             expire: 2000,
                             text: __('There are no changes to save!!!')
                         });
@@ -395,9 +393,6 @@ export var ApprovalCtrl = {
                         $$('pf:search_list').getBody().clearAll();
                         $$('apv:party_form').clearValidation();
                     });
-
-                    // dashboardCtrl.refresh = true;
-
                 } else {
                     showErrorMsg(null, response.json().message);
                     $$('partyform_cnt').config.getController().onSuggestHide();
@@ -643,9 +638,6 @@ export var ApprovalCtrl = {
         if (this.mapCtrl.navMap && this.approvalParties.length == 1){
             this.mapCtrl.retrieveSpatialUnits(this.approvalParties[0])
         }
-
-                // if (approvalCtrl.approvalParties.length > 1)
-                //     $$('apv:party_grid').refresh();
 
         $$('apv:party_grid').clearSelection();
     },

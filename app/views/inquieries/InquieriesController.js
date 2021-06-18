@@ -17,33 +17,9 @@ export var InquieriesCtrl = {
     refreshView: true,
     switchBasemap: false,
 
-    // onImageClick: (img) => {
-    //     let view = $$(img.parentElement.parentElement.getAttribute('view_id'));
-    //     if (img.getAttribute('expanded') == "false"){
-    //         let imgWidth = img.naturalWidth;
-    //         let imgHeight = img.naturalHeight;
-    //         $$(view).define({
-    //             width: imgWidth,
-    //             height: imgHeight
-    //         });
-    //         img.classList.add('image_expanded');
-    //         img.setAttribute('expanded', 'true');
-    //     } else {
-    //         $$(view).define({
-    //             width: null,
-    //             height: null
-    //         });
-    //         img.classList.remove('image_expanded');
-    //         img.setAttribute('expanded', 'false')
-    //     }
-    //     $$(view).resize();
-    // },
-
-
 
     /* --- */
     createPartyElement: (party, attachments) => {
-        // console.log(attachments)
         let attachmentCols = new Array();
         if (attachments.length > 0){
             for (let att of attachments){
@@ -57,11 +33,7 @@ export var InquieriesCtrl = {
                         src: 'api/attachment/?' + appdata.querystring + '&att_class=party&global_id=' + att.image_id,
                         alt: att.image_id
                     },
-                    // tooltip: appdata.imageTooltip,
                     template: attachmentTemplate,
-                        // `<img class="party_attachment"
-                        //     src="/ffp/consultas_v1/api/attachment.py?database=ffp_snr&att_class=party&globalid=${att.image_id}"
-                        // />`
                     css: 'party_attachment_cnt'
                 })
             }
@@ -129,7 +101,6 @@ export var InquieriesCtrl = {
     /* --- */
     onRecordsLoad: (selected) => {
         var idList = $$('inq:search_list').getList().getItem(selected).oids;
-        // console.log(idList);
 
         let params = {
             id_list: idList.toString()
@@ -238,14 +209,11 @@ export var InquieriesCtrl = {
 
     /* --- */
     showReport: function(itemId){
-        // console.clear()
 
         let params = {
             objectid: $$('inq:su_grid').getItem(itemId).objectid,
             srid: appdata.srid
         }
-
-        // console.log($$('inq:su_grid').getItem(itemId))
 
         webix.ajax().get('api/inquieries/report/',{...appdata.dbparams, ...params}).then(function(response){
             if (response.json().success){
@@ -275,7 +243,6 @@ export var InquieriesCtrl = {
                     attachmentsList.push({
                         id: item.image_id,
                         alt: item.image_id,
-                        // src: 'api/attachment.py?database=' + app.database + '&att_class=right&globalid=' + item.image_id
                         src: 'api/attachment/?' + appdata.querystring + '&att_class=right&global_id=' + item.image_id
                     });
                     attachmentsCols.push({
@@ -283,7 +250,6 @@ export var InquieriesCtrl = {
                         data: {
                             class: 'right',
                             alt: item.image_id,
-                            // src: 'api/attachment.py?database=' + app.database + '&att_class=right&globalid=' + item.image_id
                             src: 'api/attachment/?' + appdata.querystring + '&att_class=right&global_id=' + item.image_id
                         },
                         template: attachmentTemplateExt
