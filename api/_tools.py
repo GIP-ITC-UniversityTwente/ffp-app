@@ -27,6 +27,21 @@ def connParams():
 def getParams():
     dbparams.pop('password')
 
+    mapFile = open('ows.map', 'r')
+    newData = ''
+    for line in mapFile:
+        # data = line.strip()
+        if (line.find('MS_ERRORFILE') != -1):
+            newData += '\tCONFIG "MS_ERRORFILE" "' + str(os.getcwd()) + '\ms_error.txt"' + '\n'
+        elif (line.find('ows.map') != -1):
+            newData += '\t\t\t"map" "' + str(os.getcwd()) + '\ows.map"\n'
+        else:
+            newData += line
+    mapFile.close()
+    mapFile = open('ows.map', 'w')
+    mapFile.write(newData)
+    mapFile.close()
+
     return ("""{
         "success" : true,
         "path" : %s,

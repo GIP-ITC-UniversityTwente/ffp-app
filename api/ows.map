@@ -7,7 +7,7 @@ MAP
 
     IMAGETYPE PNG24
 
-    CONFIG "MS_ERRORFILE" "D:/code/ffp/ffp_app_v3.2/api/ms_error.txt"
+	CONFIG "MS_ERRORFILE" "D:\code\ffp\ffp_app_v3.2\api\ms_error.txt"
 
   #---
     PROJECTION
@@ -22,7 +22,7 @@ MAP
         IMAGEURL "/ms_tmp/"
       #---
         METADATA
-            "map" "D:/code/ffp/ffp_app_v3.2/api/services_snr.map"
+			"map" "D:\code\ffp\ffp_app_v3.2\api\ows.map"
             "ows_schemas_location" "http://schemas.opengeospatial.net"
             "ows_title" "OWS services Fit-For-Purpose project"
             "ows_abstract" "OWS services Fit-For-Purpose project"
