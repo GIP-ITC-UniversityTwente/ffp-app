@@ -132,6 +132,9 @@ export var InquieriesView = {
                     map: 'spatialunit_name',
                     sort: 'string',
                     width: 200,
+                    template: (record) => {
+                        return record.spatialunit_name == null ? '' : record.spatialunit_name;
+                    },
                     footer: {
                         text: __('Filter') + ':',
                         css: {

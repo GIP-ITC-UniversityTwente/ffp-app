@@ -303,7 +303,12 @@ export const mapStyle = {
                     textBaseline: 'middle',
                     font: 'Normal 16px Calibri,sans-serif',
                     overflow: true,
-                    text: (oid) ? feature.get('ogc_id') : feature.get('physical_id') ? feature.get('physical_id').join(', ') : '',
+                    offsetY: 10,
+                    text: (oid)
+                        ? feature.get('ogc_id')
+                        : feature.get('physical_id')
+                            ? feature.get('ogc_id') + '\n' + feature.get('physical_id').join(', ')
+                            : '',
                     fill: new ol.style.Fill({color: '#fff'}),
                     stroke: new ol.style.Stroke({color: '#a941d8', width: 3.5}),
                     rotation: 0

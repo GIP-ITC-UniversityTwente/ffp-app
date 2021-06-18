@@ -287,7 +287,7 @@ export var InquieriesCtrl = {
                     : (Number(details.area_m2)/10000).toFixed(1) + ' has'
                 $$('inq:details_form').setValues({
                     'inq:details_physicalid': (details.physical_id) ? details.physical_id.join(', ') : '',
-                    'inq:details_label': details.address,
+                    'inq:details_label': details.address == null ? __('---') : details.address,
                     'inq:details_spatialunittype': details.spatialunit_type,
                     'inq:details_area': areaValue,
                     'inq:details_legalid': details.legal_id,
