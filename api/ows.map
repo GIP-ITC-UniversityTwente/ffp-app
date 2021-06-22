@@ -127,11 +127,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (SELECT objectid AS ogc_id, spatialunit_name, geom AS ogc_geom
-                FROM %SCHEMA%.spatialunit
-                WHERE objectid = '%SU_ID%')
-            AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (SELECT objectid AS ogc_id, spatialunit_name, geom AS ogc_geom FROM %SCHEMA%.spatialunit WHERE objectid = '%SU_ID%') AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -183,13 +179,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA 'ogc_geom FROM
-                (WITH r AS
-                    (SELECT DISTINCT spatialunit_id, right_type
-                    FROM %SCHEMA%.right)
-                SELECT s.objectid AS ogc_id, r.right_type, s.geom AS ogc_geom
-                FROM %SCHEMA%.spatialunit as s LEFT JOIN r on s.globalid = r.spatialunit_id)
-            AS query USING UNIQUE ogc_id USING SRID=4326'
+            DATA 'ogc_geom FROM (WITH r AS (SELECT DISTINCT spatialunit_id, right_type FROM %SCHEMA%.right) SELECT s.objectid AS ogc_id, r.right_type, s.geom AS ogc_geom FROM %SCHEMA%.spatialunit as s LEFT JOIN r on s.globalid = r.spatialunit_id) AS query USING UNIQUE ogc_id USING SRID=4326'
       #---
         VALIDATION
             "default_DATABASE" "%"
@@ -239,12 +229,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (SELECT l.limitid AS ogc_id, l.id_pol AS su_id, c.status, st_length(geom) as length,
-                        l.geom AS ogc_geom
-                FROM %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c ON l.limitid = c.limitid
-                WHERE l.id_pol::TEXT LIKE '%SU_ID%')
-            AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (SELECT l.limitid AS ogc_id, l.id_pol AS su_id, c.status, st_length(geom) as length, l.geom AS ogc_geom FROM %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c ON l.limitid = c.limitid WHERE l.id_pol::TEXT LIKE '%SU_ID%') AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -295,12 +280,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (SELECT l.limitid AS ogc_id, l.id_pol AS su_id, c.status, st_length(geom) as length,
-                        l.geom AS ogc_geom
-                 FROM %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c ON l.limitid = c.limitid
-                 WHERE l.id_pol::TEXT LIKE '%SU_ID%')
-              AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (SELECT l.limitid AS ogc_id, l.id_pol AS su_id, c.status, st_length(geom) as length, l.geom AS ogc_geom FROM %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c ON l.limitid = c.limitid WHERE l.id_pol::TEXT LIKE '%SU_ID%') AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
           "default_SU_ID" "%"
@@ -351,12 +331,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (select s.objectid as ogc_id, s.globalid, s.spatialunit_name, r.right_type,
-                        s.geom as ogc_geom
-                from %SCHEMA%.spatialunit as s join %SCHEMA%.right as r on r.spatialunit_id = s.globalid
-                where r.right_type = '99')
-            AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (select s.objectid as ogc_id, s.globalid, s.spatialunit_name, r.right_type, s.geom as ogc_geom from %SCHEMA%.spatialunit as s join %SCHEMA%.right as r on r.spatialunit_id = s.globalid WHERE r.right_type = '99') AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_DATABASE" "%"
@@ -413,10 +388,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA 'ogc_geom FROM
-                (SELECT objectid AS ogc_id, array_to_json(physical_id) as physical_id, geom AS ogc_geom
-                  FROM %SCHEMA%.spatialunit WHERE objectid IN (%SUIDS%))
-              AS query USING UNIQUE ogc_id USING SRID=4326'
+            DATA 'ogc_geom FROM (SELECT objectid AS ogc_id, array_to_json(physical_id) as physical_id, geom AS ogc_geom FROM %SCHEMA%.spatialunit WHERE objectid IN (%SUIDS%)) AS query USING UNIQUE ogc_id USING SRID=4326'
       #---
         VALIDATION
             "default_SUIDS" "%"
@@ -495,13 +467,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (SELECT pto AS ogc_id, id_pol AS su_id,
-                        st_y(geom) AS lat, st_x(geom) AS lon,
-                        geom AS ogc_geom
-                FROM %SCHEMA%.puntos_predio
-                WHERE label = 'T' AND id_pol = %SU_ID%)
-              AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (SELECT pto AS ogc_id, id_pol AS su_id, st_y(geom) AS lat, st_x(geom) AS lon, geom AS ogc_geom FROM %SCHEMA%.puntos_predio WHERE label = 'T' AND id_pol = %SU_ID%) AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -553,13 +519,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (SELECT pto AS ogc_id, id_pol AS su_id,
-                        st_y(geom) AS lat, st_x(geom) AS lon,
-                        geom AS ogc_geom
-                FROM %SCHEMA%.puntos_predio
-                WHERE label = 'A' AND id_pol = %SU_ID%)
-              AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (SELECT pto AS ogc_id, id_pol AS su_id, st_y(geom) AS lat, st_x(geom) AS lon, geom AS ogc_geom FROM %SCHEMA%.puntos_predio WHERE label = 'A' AND id_pol = %SU_ID%) AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -613,22 +573,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                ((select v.objectid as ogc_id, v.esrignss_h_rms as h_rms, v.geom as ogc_geom,
-                         'v' as point_type, v.esrignss_fixdatetime
-                from %SCHEMA%.spatialunit as s
-                   join %SCHEMA%.vertexpoint as v
-                        on ST_Within(st_transform(v.geom,%SRID%), st_buffer(st_transform(s.geom,%SRID%),3))
-                where s.objectid::text like '%SU_ID%')
-                union
-                (select a.objectid as ogc_id, a.esrignss_h_rms as h_rms, a.geom as ogc_geom,
-                        'a' as point_type, a.esrignss_fixdatetime
-                from %SCHEMA%.spatialunit as s
-                   join %SCHEMA%.anchorpoint as a
-                   on ST_Within(st_transform(a.geom,%SRID%), st_buffer(st_transform(s.geom,%SRID%),3))
-                where s.objectid::text like '%SU_ID%')
-                order by 5)
-              AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM ((SELECT v.objectid AS ogc_id, v.esrignss_h_rms AS h_rms, v.geom AS ogc_geom, 'v' AS point_type, v.esrignss_fixdatetime FROM %SCHEMA%.spatialunit AS s JOIN %SCHEMA%.vertexpoint AS v ON ST_Within(st_transform(v.geom,%SRID%), st_buffer(st_transform(s.geom,%SRID%),3)) WHERE s.objectid::text LIKE '%SU_ID%') UNION (SELECT a.objectid AS ogc_id, a.esrignss_h_rms AS h_rms, a.geom AS ogc_geom, 'a' AS point_type, a.esrignss_fixdatetime FROM %SCHEMA%.spatialunit AS s JOIN %SCHEMA%.anchorpoint AS a ON ST_Within(st_transform(a.geom,%SRID%), st_buffer(st_transform(s.geom,%SRID%),3)) WHERE s.objectid::text LIKE '%SU_ID%') ORDER BY 5) AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -683,36 +628,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (WITH b AS (
-                  SELECT limitid, id_party, max(changed_on) AS changed_on
-                  FROM %SCHEMA%.status_log
-                  group by limitid, id_party
-                ),
-                d AS (
-                  SELECT f.limitid, f.concepto, f.fecha, b.changed_on
-                  FROM %SCHEMA%.firma_l AS f LEFT JOIN b
-                      ON f.limitid = b.limitid AND f.id_party = b.id_party
-                ),
-                r AS (
-                  SELECT l.limitid, c.status, l.geom, max(d.changed_on) changed_on
-                  from %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c
-                      ON l.limitid = c.limitid
-                      LEFT JOIN d ON d.limitid = l.limitid
-                  GROUP BY  l.limitid, c.status, l.geom
-                )
-                SELECT limitid as ogc_id, geom as ogc_geom,
-                  CASE
-                    WHEN status IS NULL THEN 1
-                    ELSE status
-                  END AS status,
-                  CASE
-                    WHEN changed_on IS NULL THEN '2000-01-01'::timestamp
-                    ELSE changed_on
-                  END AS changed_on
-                FROM r %CONDITION%
-                ORDER BY changed_on, status)
-              AS query USING UNIQUE ogc_id USING SRID=4326"
+            DATA "ogc_geom FROM (WITH b AS (SELECT limitid, id_party, max(changed_on) AS changed_on FROM %SCHEMA%.status_log GROUP BY limitid, id_party), d AS ( SELECT f.limitid, f.concepto, f.fecha, b.changed_on FROM %SCHEMA%.firma_l AS f LEFT JOIN b ON f.limitid = b.limitid AND f.id_party = b.id_party), r AS (SELECT l.limitid, c.status, l.geom, max(d.changed_on) changed_on FROM %SCHEMA%.limites AS l JOIN %SCHEMA%.muestra_limite_view AS c ON l.limitid = c.limitid LEFT JOIN d ON d.limitid = l.limitid GROUP BY l.limitid, c.status, l.geom) SELECT limitid as ogc_id, geom as ogc_geom, CASE WHEN status IS NULL THEN 1 ELSE status END AS status, CASE WHEN changed_on IS NULL THEN '2000-01-01'::timestamp ELSE changed_on END AS changed_on FROM r %CONDITION% ORDER BY changed_on, status) AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_CONDITION" ""
@@ -763,10 +679,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-        DATA "ogc_geom FROM
-                (select gid AS ogc_id, road_name, road_type, geom AS ogc_geom
-                 from basedata.road)
-              AS query USING UNIQUE ogc_id USING SRID=4686"
+            DATA "ogc_geom FROM (SELECT gid AS ogc_id, road_name, road_type, geom AS ogc_geom FROM basedata.road) AS query USING UNIQUE ogc_id USING SRID=4686"
       #---
         VALIDATION
             "default_DATABASE" "%"
