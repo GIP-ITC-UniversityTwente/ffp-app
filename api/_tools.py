@@ -1,4 +1,5 @@
 #!C:\ms4w\Python\python.exe
+# ---
 
 import os
 import cgi
