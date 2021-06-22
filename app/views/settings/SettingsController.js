@@ -19,6 +19,7 @@ export var SettingsCtrl = {
         let dbparams = appdata.dbparams;
 
                     {// temp
+                        appdata.dbparams.database = 'app_test';
                         // appdata.dbparams.database = 'ffp_v9_vh';
                     }// temp
 

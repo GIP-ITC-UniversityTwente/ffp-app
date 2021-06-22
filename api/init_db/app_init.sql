@@ -137,7 +137,7 @@ BEGIN;
 
 	CREATE MATERIALIZED VIEW concepto_predio_con_vecinos_view
     AS
-    SELECT f.predio,
+    SELECT vr.predio,
         f.limitid,
         f.id_party,
         vr.vecino,
@@ -235,7 +235,7 @@ BEGIN;
 
 	--
 
-    CREATE SCHEMA IF NOT EXISTS basedata
+    CREATE SCHEMA IF NOT EXISTS basedata;
     GRANT USAGE ON SCHEMA basedata TO kadaster;
     ALTER DEFAULT PRIVILEGES IN SCHEMA basedata GRANT SELECT ON TABLES TO kadaster;
 

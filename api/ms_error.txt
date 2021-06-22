@@ -1,6 +1,0 @@
-[Fri Jun 18 08:42:39 2021].227000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
-[Fri Jun 18 08:42:39 2021].273000 msQueryByRect(): Search returned no results. No matching record(s) found.
-[Fri Jun 18 08:42:55 2021].531000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
-[Fri Jun 18 08:42:55 2021].565000 msQueryByRect(): Search returned no results. No matching record(s) found.
-[Fri Jun 18 08:45:01 2021].488000 msPostGISLayerGetExtent(): General error message. msPostGISLayerGetExtent: Null result returned.
-[Fri Jun 18 08:45:01 2021].522000 msQueryByRect(): Search returned no results. No matching record(s) found.
