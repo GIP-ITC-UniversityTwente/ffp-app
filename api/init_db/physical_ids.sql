@@ -19,6 +19,9 @@ BEGIN;
 
 	UPDATE inspection.spatialunit
 	SET physical_id = array_remove(physical_id, '');
+	
+	UPDATE inspection.spatialunit
+	SET physical_id = array_remove(physical_id, null);
 
 	ALTER TABLE inspection.spatialunit
 	DROP COLUMN phy_ids;
