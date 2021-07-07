@@ -322,7 +322,7 @@ def updateParty():
                     pg_cursor.close()
                     return response
                 else:
-                    os.remove(imageName)
+                    # os.remove(imageName)
                     response += ' -[ ' + query['message'] + ' ]- '
 
         id_docs = json.loads(params.getvalue('id_docs'))
@@ -354,7 +354,7 @@ def updateParty():
                     pg_cursor.close()
                     return response
                 else:
-                    os.remove(imageName)
+                    # os.remove(imageName)
                     response += ' -[ ' + query['message'] + ' ]- '
 
     response = '{"success" : true, "message": "' + response + '" }'
