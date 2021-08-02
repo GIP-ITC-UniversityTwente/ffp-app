@@ -5,7 +5,7 @@
 export var AppData = {
     name: 'Fit-for-Purpose — Web Application',
     version: '3.2.5',
-    rights: 'Kadaster &mdash; ITC-UT',
+    rights: 'Kadaster &mdash; Faculty ITC - University of Tuwente &mdash; Universidad Distrtial',
     year: '2021',
     lang: 'en',
 
