@@ -14,7 +14,6 @@ export const onImageError = (obj) => {
 /* Handle image dblclick */
 export const showFullSizeImage = (obj, att_class, image_src) => {
     if (image_src != ''){
-        console.log(obj.getAttribute('rotation'));
         var win = window.open('images/image.html?' + appdata.querystring +
             '&att_class=' + att_class + '&global_id=' + image_src + '&rotation=' +
             obj.getAttribute('rotation'), '_blank');

@@ -312,7 +312,6 @@ export var RightsCtrl = {
         $$('rw:attachment_details').getItem('rw:attachments_title').label = __('Attachments Details');
         RightsCtrl.rightAttSet = null;
         $$('right_details_window').hide();
-        console.log(5566)
     },
 
 
@@ -361,11 +360,8 @@ export var RightsCtrl = {
                 }).then(() => {
                     $$('right_details_window').enable();
                     RightsCtrl.resetRightDetailsWindow();
-
-                    console.log('456-7')
                 });
 
-                console.log('456-5')
             } else {
                 $$('right_details_window').enable();
                 showErrorMsg(null, response.json().message);
@@ -374,8 +370,6 @@ export var RightsCtrl = {
             $$('right_details_window').enable();
             showErrorMsg(err, '');
         });
-
-        console.log('456-3')
 
     }
 

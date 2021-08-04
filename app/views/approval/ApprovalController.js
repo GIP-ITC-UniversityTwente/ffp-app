@@ -420,7 +420,6 @@ export var ApprovalCtrl = {
 
         let iconWidth = 50;
         let icon = (att_type == 'iddoc') ? 'mdi-card-account-details-outline' : 'mdi-account';
-        console.log(icon)
         webix.ui({
             view: 'popup',
             id: 'pf:partyphoto_menu',
@@ -610,7 +609,6 @@ export var ApprovalCtrl = {
             };
             webix.ajax().post('api/attachment/capture/', {...appdata.dbparams, ...params})
                 .then(function(response){
-                    console.log(response.json());
                     ApprovalCtrl.addPartyAttachment(response.json().globalid, att_type);
                 });
             imgEl.setAttribute('src', rawImage);
@@ -623,7 +621,6 @@ export var ApprovalCtrl = {
             ImageCapture.hide();
         }
 
-        console.log(button)
     },
 
 
@@ -741,9 +738,9 @@ export var ApprovalCtrl = {
     resetInspectionForms: () => {
         ApprovalCtrl.fingerprintSample = null;
         ApprovalCtrl.signaturePad.clear();
-        ApprovalCtrl.currSignatureData = null,
+        ApprovalCtrl.currSignatureData = null;
         ApprovalCtrl.signaturePartyId = null;
-        ApprovalCtrl.idList = new Array(),
+        ApprovalCtrl.idList = new Array();
         ApprovalCtrl.approvalParties = new Array();
 
         ApprovalCtrl.spatialunitData = null;
@@ -1078,7 +1075,6 @@ export var ApprovalCtrl = {
                     expire: 2000,
                     text: __('No signature detected!!!')
                 });
-                console.log('not yet');
             } else {
                 $$('isf:carousel').setActiveIndex(0);
                 document.getElementById('signature_image').src = ApprovalCtrl.signaturePad.toDataURL();
