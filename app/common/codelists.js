@@ -12,7 +12,9 @@ export const codes = {
         spatialunittype: {
             1: 'House',
             2: 'House Lot',
-            3: 'Commerce'
+            3: 'Business',
+            4: 'Farm',
+            0: 'Other'
         },
 
         gender: {
@@ -69,7 +71,8 @@ export const codes = {
             3: 'Utility Receipt',
             4: 'Purchase Agreement',
             5: 'Tax Receipt',
-            6: 'Certificate of Tradition and Freedom',
+            6: 'Certificate of Honest Posseion',
+            7: 'Certificate of Tradition and Freedom',
             0: 'Other'
         },
 
@@ -94,7 +97,9 @@ export const codes = {
         spatialunittype: {
             1: 'Casa',
             2: 'Casa Lote',
-            3: 'Comercio'
+            3: 'Negocio',
+            4: 'Finca',
+            0: 'Otro'
         },
 
         gender: {
@@ -152,6 +157,7 @@ export const codes = {
             4: 'Carta de Compraventa',
             5: 'Recibo de Impuestos',
             6: 'Certificado de Sana Posesión',
+            7: 'Certiificado de Tradicion y Libertad',
             0: 'Otro'
         },
 
