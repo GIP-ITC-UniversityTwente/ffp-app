@@ -1,3 +1,6 @@
-.vscode/
-/.vscode
+/.vscode/*
+/node_modules/*
 *.pyc
+gruntfile.js
+package.json
+package-lock.json
