@@ -1,13 +1,1 @@
-/*
-    Dashboard View
-*/
-
-import { DashboardCtrl } from "./defController";
-
-
-export var DashboardView = {
-    id: 'dashboard-cnt',
-    getController: () => {
-        return(DashboardCtrl);
-    }
-};
+import{DashboardCtrl}from"./defController";var DashboardView={id:"dashboard-cnt",getController:()=>DashboardCtrl};export{DashboardView};

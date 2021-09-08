@@ -1,10 +1,1 @@
-/*
-    Dashboard Controller
-*/
-
-import { showErrorMsg } from "../../common/tools";
-
-
-export var DashboardCtrl = {
-
-};
+import{showErrorMsg}from"../../common/tools";var DashboardCtrl={};export{DashboardCtrl};
