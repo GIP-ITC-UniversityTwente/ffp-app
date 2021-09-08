@@ -17,4 +17,7 @@
 * UareU v3.0
 * MaterialDesign Icons v5.3.45
 
-* FFP data model v9.1
+* FFP data model v9.2
+
+
+![GitHub Logo](/images/ffp-app.png)
