@@ -1,4 +1,4 @@
-# FFP Public Inspection App
+# Fit-for-Purpsoe (FfP) App
 
 ©2021 Javier Morales - <a href="mailto:j.morales@utwente.nl">j.morales@utwente.nl</a>
 
