@@ -1,1 +1,0 @@
-import{DashboardCtrl}from"./defController";var DashboardView={id:"dashboard-cnt",getController:()=>DashboardCtrl};export{DashboardView};

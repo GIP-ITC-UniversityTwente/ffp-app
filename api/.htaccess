@@ -2,24 +2,23 @@ Options +ExecCGI -Indexes
 AddHandler cgi-script .py
 RewriteEngine on
 
+RewriteRule ^spatialunit/(.*)/$ ./services/spatialunit.py?operation=$1 [QSA,L]
+RewriteRule ^party/(.*)/$ ./services/party.py?operation=$1 [QSA,L]
 
-RewriteRule ^spatialunit/(.*)/$ ./_spatialunit.py?operation=$1 [QSA,L]
-RewriteRule ^party/(.*)/$ ./_party.py?operation=$1 [QSA,L]
+RewriteRule ^tools/(.*)/$ ./services/tools.py?function=$1 [QSA,L]
 
-RewriteRule ^tools/(.*)/$ ./_tools.py?function=$1 [QSA,L]
+RewriteRule ^attachment/$ ./services/attachment.py?operation=get [QSA,L]
+RewriteRule ^attachment/(upload|capture)/$ ./services/savefile.py? [QSA,L]
 
-RewriteRule ^attachment/$ ./_attachment.py?operation=get [QSA,L]
-RewriteRule ^attachment/(upload|capture)/$ ./_savefile.py? [QSA,L]
+RewriteRule ^dashboard/data/$ ./services/dashboard.py [QSA,L]
 
-RewriteRule ^dashboard/data/$ ./_dashboard.py [QSA,L]
+RewriteRule ^concepts/update/$ ./services/updateconcepts.py [QSA,L]
 
-RewriteRule ^concepts/update/$ ./updateconcepts.py [QSA,L]
+RewriteRule ^rights/(.*)/$ ./services/rights.py?operation=$1 [QSA,L]
 
-RewriteRule ^rights/(.*)/$ ./_rights.py?operation=$1 [QSA,L]
+RewriteRule ^certificate/$ ./services/certificate.py?operation=get [QSA,L]
 
-RewriteRule ^certificate/$ ./_certificates.py?operation=get [QSA,L]
-
-RewriteRule ^inquieries/(.*)/$ ./_inquieries.py?operation=$1 [QSA,L]
+RewriteRule ^inquieries/(.*)/$ ./services/inquieries.py?operation=$1 [QSA,L]
 
 <Files ~ "params.json">
     Order allow,deny
@@ -27,6 +26,11 @@ RewriteRule ^inquieries/(.*)/$ ./_inquieries.py?operation=$1 [QSA,L]
 </Files>
 
 <Files ~ ".params">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ~ "ows.map">
     Order allow,deny
     Deny from all
 </Files>
