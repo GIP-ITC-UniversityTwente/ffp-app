@@ -53,21 +53,22 @@ folder names for the source files.
 	The database’s name parameter is editable via the App (the database value in this file is not used by the app)
 
 - Mosaic files (if available) should be named using the name of the corresponding database and located as follows:
-    name:	 	mosaic_ffp_cumaribo.tif
+    name:	mosaic_ffp_cumaribo.tif
                 mosaic_ffp_cumaribo.tif.aux.xml
-	            ...
-	            (where ‘ffp_cumaribo’ is the name of the associated database)
+	         ...
+	        (where ‘ffp_cumaribo’ is the name of the associated database)
+    
     location: 	../basedata
 
-- Attachments added trough the App are stored in:
+- Attachments added through the App are stored in:
 	./images/uploads
 
 -------
 
-- Install the Digital PErsona service to communicate with figerprint readers
+- Install the Digital Persona service to communicate with figerprint readers
 
 #---
-# Digitalpersona connection (authorize this URLS)
+# Digitalpersona connection (authorize these URLs)
 #---
 
 https://127.0.0.1:52181/get_connection
