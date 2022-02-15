@@ -1,1 +1,0 @@
-[Tue Nov  9 14:55:45 2021].769000 msWFSGetFeature(): WFS server error. TYPENAME 'spatialunit1' doesn't exist in this server.  Please check the capabilities and reformulate your request.

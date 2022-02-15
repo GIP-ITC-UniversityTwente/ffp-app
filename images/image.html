@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>FFP Attachment</title>
+
+        <!-- App -->
+            <link rel="stylesheet" type="text/css" href="image.css" />
+
+            <script>
+                var urlParams;
+                function init(){
+                    let img = document.getElementById('ffp_att');
+                    urlParams = Object.fromEntries(new URLSearchParams(location.search));
+                    let urlPath = window.location.pathname.split('/');
+
+                    let querystring = Object.keys(urlParams).map(key => key + '=' + urlParams[key]).join('&');
+
+                    img.classList = [ 'rotate-' + urlParams.rotation ]
+                    img.src = '../api/attachment/?' + querystring
+                };
+            </script>
+
+    </head>
+    <body onload="init()">
+        <div id="ffp_div">
+            <img id="ffp_att" class="test" alt="ffp attachment">
+        </div>
+    </body>
+</html>

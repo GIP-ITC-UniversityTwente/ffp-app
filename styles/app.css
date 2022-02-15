@@ -1,0 +1,420 @@
+/*- -------------------------------------
+    App Layout
+ ------------------------------------ -*/
+
+.applogo {
+	background:url(../images/ffp-32x32_dark.png) 2px 0px no-repeat;
+}
+
+.webix_el_label.version .webix_el_box {
+    font-size: 9pt;
+    font-weight: 100;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.footer .webix_template{
+	display: table;
+	width: 100%;
+}
+.footer p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.webix_toolbar.webix_dark .webix_secondary.sidebar_button button{
+    line-height: 28px !important;
+}
+.webix_toolbar.webix_dark .webix_secondary.sidebar_button .webix_icon_btn {
+    margin-right: 0;
+}
+
+.webix_view.panel {
+    background-color: #ddd;
+}
+
+
+.sign_date .webix_el_box input[readonly] {
+    color: dodgerblue;
+}
+
+input[readonly] {
+    background-color:rgba(253, 242, 234, 0.3);
+    cursor: default;
+}
+textarea[readonly] {
+    background-color:rgba(253, 242, 234, 0.3);
+    cursor: default;
+}
+
+.webix_message_area {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.webix_message_area > div {
+    background-color: #b4f8f8;
+    text-align: center;
+}
+
+.border_right {
+    padding-right: 5px;
+    background-color: #ddd;
+}
+
+.property_cnt {
+    border-bottom: solid 1px #eee !important;
+}
+
+.dropdown .webix_el_box::after {
+    font-family: "Webix Material Icons";
+    content: " \F027";
+    margin-top: 2px;
+    margin-left: -24px;
+    position: absolute;
+    color: #94a1b3;
+    font-size: 20px;
+}
+
+/*- -------------------------------------
+    Approval view
+ ------------------------------------ -*/
+
+.gui_panel {
+    background-color: #fff;
+}
+
+.toolbar_button div.webix_el_box button {
+    border-radius: 5px;
+}
+
+.webix_secondary.rotate .webix_button .webix_icon_btn {
+    margin-right: 0;
+    margin-top: 4px;
+}
+
+.right_mark .webix_el_box .webix_inp_label {
+    padding-right: 2px;
+    padding-left: 6px;
+}
+
+.disabled-input div.webix_el_box input,
+.disabled-input div.webix_el_box div.webix_inp_static
+{
+    cursor: default;
+    background-color: #f0f0f0;
+}
+.disabled-input div.webix_el_box div.webix_inp_static .webix_placeholder
+{
+    color: #cacaca;
+}
+
+
+.webix_nav_button_side.webix_nav_button_next .webix_nav_button_inner:focus,
+.webix_nav_button_side.webix_nav_button_prev .webix_nav_button_inner:focus,
+.webix_nav_button_side.webix_nav_button_next .webix_nav_button_inner,
+.webix_nav_button_side.webix_nav_button_prev .webix_nav_button_inner {
+    background-color: transparent;
+    color: transparent;
+}
+
+.webix_nav_button_side.webix_nav_button_next .webix_nav_button_inner:hover,
+.webix_nav_button_side.webix_nav_button_prev .webix_nav_button_inner:hover {
+    background-color: transparent;
+    color: #3dbddd;
+}
+
+
+.webix_view.party_attachment_cnt .webix_template,
+.webix_view.right_attachment_cnt .webix_template,
+.validation-image, #fingerprint_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.party_attachment, #signature_image, #fingerprint_image, #fgp_image {
+    image-orientation: from-image;
+    text-align: center;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.right_attachment {
+    image-orientation: from-image;
+    text-align: center;
+    max-height: 98%;
+    max-width: 98%;
+}
+
+
+.expandable_image {
+    image-orientation: from-image;
+    text-align: center;
+    max-width: 98%;
+    max-height: 98%;
+    cursor: zoom-in;
+}
+
+
+.image_expanded {
+    cursor: zoom-out;
+}
+
+
+
+.right_details .webix_property_value {
+    color: #1279bf;
+}
+
+div.editable_input div.webix_el_box input,
+div.editable_input div.webix_el_box div.webix_inp_static {
+    color: #1279bf;
+    background-color: #f4faff;
+}
+
+
+/* ---
+   approval panel
+--- */
+
+.remarks div input,  .with_remarks div input {
+    cursor: pointer;
+}
+.remarks div input {
+    color: black;
+}
+.with_remarks div input {
+    color: dodgerblue;
+}
+.remarks div input:hover, .with_remarks div input:hover {
+    background-color: #e6f3ff;
+}
+
+#reference_canvas {
+    width: 710px;
+    height: 0px;
+    border: 1px solid #808080;
+    position: absolute;
+    left: 80px; top: 380px;
+}
+
+/* ---
+    Image rotation
+--- */
+
+.rotate-0 {
+    -webkit-transform:rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.rotate-90 {
+    -webkit-transform:rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.rotate-180 {
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.rotate-270 {
+    -webkit-transform:rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+ /*- -------------------------------------
+    Dashboard
+ ------------------------------------ -*/
+
+ .dashboard-right {
+    float: right;
+    margin-top: 15px;
+    margin-right: 20px;
+    text-align: right;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.dashboard-left {
+    float: left;
+    margin-top: 30px;
+    padding-left: 20px;
+}
+
+.dsh_div, .webix_view.dsh_div {
+    border-radius: 4px;
+}
+
+.webix_view.gauge_chart {
+    text-align: center;
+}
+
+
+/* items row */
+#dsh-hectares_text {
+    color:rgb(28, 176, 28);
+}
+.dsh-hectares_box {
+    border: 1px solid #28a428;
+    background: #d6f5d6;
+}
+
+
+#dsh-spatialunits_text {
+    color:#b24dff;
+}
+.dsh-spatialunits_box {
+    border: 1px solid #b24dff;
+    background: #e9ccff;
+}
+
+
+#dsh-parties_text {
+    color:#fd5f15;
+}
+.dsh-parties_box {
+    border: 1px solid #fd5f15;
+    background: #ffddcc;
+}
+
+
+/* sizes row */
+#dsh-largest_text {
+    color:#eb2668;
+}
+.dsh-largest_box {
+    border: 1px solid #eb2668;
+    background: #ffdbdb;
+}
+
+#dsh-smallest_text {
+    color:#fdcb05;
+}
+.dsh-smallest_box {
+    border: 1px solid #fdcb05;
+    background: #fff9ab;
+}
+
+#dsh-average_text {
+    color:rgb(4, 138, 231);
+}
+.dsh-average_box {
+    border: 1px solid #048ae7;
+    background: #c1e3fa;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+/* tenure row */
+.dsh-right_box {
+    border: 1px solid #70706e;
+    background: #ececec;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+.dsh-right_box div {
+    text-align: center;
+    line-height: 35px
+}
+.dsh-right_box div span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 9pt;
+}
+
+.missing_attachment {
+    background-color: #eee;
+    border-right: solid 1px #dadee0 !important;
+}
+
+.missing_attachment .webix_el_box .webix_icon_button .webix_icon.mdi.mdi-account {
+    color: red;
+}
+.missing_attachment .webix_el_box .webix_icon_button .webix_icon.mdi.mdi-card-account-details-outline {
+    color: lightseagreen;
+}
+
+/* capture image */
+
+#camera_container {
+    height: 100%;
+    width: 100%;
+}
+
+.camera, .camera video, .camera img {
+    position: absolute;
+    max-height: 220px;
+    text-align: center;
+    left: 13px;
+}
+
+
+.webixtype_base.signButton, .webixtype_base.checkButton {
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: #7b7e94;
+    width: 100%;
+    border: 0px;
+}
+.webixtype_base.signButton:hover, .webixtype_base.checkButton:hover {
+    background-color: #43455c;
+}
+
+.webixtype_base.no_id_yet {
+    background-color: #d6e2e9;;
+    color: #444444;
+}
+.webixtype_base.no_id_yet:hover {
+    background-color: #bcd8e7;
+}
+
+.mdi.mdi-checkbox-marked-outline {
+    color: #1CA1C1;
+    font-size: 14px;
+}
+
+.srid {
+    color: #B22222;
+    font-weight: bold;
+}
+
+.srid_value .webix_property_value, .srid_value input {
+    color: #B22222;
+    font-style: oblique;
+}
+
+.attachments_list {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 90%;
+    max-width: 90%;
+    position: relative;
+    top: 50%;
+    width: auto;
+    height: auto;
+    transform: translateY(-50%);
+}
+
+.flex_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

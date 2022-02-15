@@ -1,0 +1,1 @@
+const ConceptColor=f=>{var o=["#ffffff","#000000","#ffff00","#22dd22","#ff1a1a","#ffff00","#22dd22","#ff1a1a","","#4da6ff"];return o[f]||o[1]},ConceptPieColor=f=>{return["","#999999","#FFE435","#22DD22","#FF1A1A","","","","","#66b3ff"][f]};export{ConceptColor,ConceptPieColor};

@@ -1,0 +1,105 @@
+/*- -------------------------------------
+    Certificates
+ ------------------------------------ -*/
+
+.webix_view.letter_page {
+    display: block;
+    margin: 0px auto;
+    width: 21.6cm;
+    height: 27.8cm;
+}
+
+.actaDiv {
+    margin: 2mm;
+    border: 1px solid #000;
+    height: 27.4cm;
+    text-align: center;
+}
+
+.certificate_title {
+    text-align: center;
+    padding-top: 65px;
+}
+
+.certificate_title span {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.ceetificate_image {
+    max-height: 100%;
+    max-width: 90%;
+}
+
+.webix_view.print_area {
+    background: aliceblue;
+}
+
+
+.webix_view.crt_disabled.webix_layout_form.webix_disabled_view div.webix_disabled {
+    background-color: rgb(245, 245, 219);
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+
+.crtmap_interaction {
+    z-index: 500;
+    position: relative;
+    border: solid 2px #555 !important;
+}
+
+#crt_signature_canvas {
+    display: none;
+    border:solid 1px #ccc;
+    margin: 10px auto;
+    width: 600px;
+}
+
+.crt_signature {
+    height: 40px;
+    width: 210px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+.crt_signature img {
+    max-height: 38px;
+    max-width: 200px;
+}
+
+
+.crt_value {
+    color: #1ca1c1;
+}
+.webix_el_text.crt_value input {
+    color: #1ca1c1;
+    border: none;
+    padding-left: 0px;
+}
+
+
+.webix_view.crt_field_group {
+    border-bottom: #c2c2c2 solid 1px !important;
+}
+
+.crt_navmap_controls .ol-rotate button{
+    color: #000;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+@media print {
+    .webix_view.print_area {
+        page-break-after: always;
+        background: #fff;
+    }
+
+
+    .webix_view.crt_disabled.webix_layout_form.webix_disabled_view div.webix_disabled {
+        background-color: rgba(245, 245, 219, 0);
+        cursor: pointer;
+    }
+
+}
