@@ -1,8 +1,0 @@
-{
-    "database" : null,
-    "schema" : "inspection",
-    "host" : "localhost",
-    "port" : "5432",
-    "user" : "kadaster",
-    "password" : "kadaster**"
-}
