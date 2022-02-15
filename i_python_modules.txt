@@ -20,12 +20,3 @@ $ pip install pathlib
 
 $ pip install psycopg2
 
-
-
-
-#---
-# Digitalpersona connection
-#---
-
-https://127.0.0.1:52181/get_connection
-https://127.0.0.1:9001/connect
