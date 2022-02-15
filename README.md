@@ -1,4 +1,4 @@
-# Fit-for-Purpsoe (FfP) App
+# Fit-for-Purpose (FfP) App
 
 ©2021 Javier Morales - <a href="mailto:j.morales@utwente.nl">j.morales@utwente.nl</a>
 
