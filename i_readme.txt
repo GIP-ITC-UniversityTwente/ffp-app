@@ -1,28 +1,28 @@
 FFP APP
 -------
 
-Source DB file (2020-09-25_TrainingDataset_processed.backup)
+Source DB model (ffp-v9.2)
 
 - Database configuration:
 	There should be two existing users kadaster & kadaster_admin
 	The App uses a schema called inspection to access data (no other schema is required)
 
 - Initialize the database elements needed by the App by executing the following script:
-    ./api/init_db/app_init.sql
+    ./api/db_config/app_init.sql
 
 - Update the type of the 'physical_id' field (existing values will be formated as an array)
-    ./api/init_db/physical_ids.sql
+    ./api/db_config/physical_ids.sql
 
 -------
 
 Create the necesary Apache configuration files (httpd_###.conf) based on the chosen
 folder names for the source files.
 
-    For example 'httpd_ffp.conf' :
+    For the application: 'httpd_ffp.conf' :
 
-        Alias /ffp/ "C:/ffp/"
+        Alias /ffp/ "C:/code/ffp/"
 
-        <Directory "C:/ffp/">
+        <Directory "C:/code/ffp/">
             AllowOverride All
             Options Indexes FollowSymLinks Multiviews ExecCGI
             AddHandler cgi-script .py
@@ -30,15 +30,27 @@ folder names for the source files.
             Allow from all
             Require all granted
         </Directory>
+	
+	
+    For example 'httpd_basedata.conf' :
+
+        Alias /ffp/ "C:/code/basedata/"
+
+        <Directory "C:/code/basedata/">
+            AllowOverride None
+            Options Indexes FollowSymLinks Multiviews ExecCGI
+            Order allow,deny
+            Allow from all
+        </Directory>	
 
 -------
 
 - Default App values such as language, SRID, etc. are stored in:
-    ./models/config.js
+    ./api/settings.json
 
 - Database connection details are stored in:
-	./api/params.json
-	The database’s name parameter is editable via the App (the database value in this file is not used)
+	./api/services/params.json
+	The database’s name parameter is editable via the App (the database value in this file is not used by the app)
 
 - Mosaic files (if available) should be named using the name of the corresponding database and located as follows:
     name:	 	mosaic_ffp_cumaribo.tif
@@ -50,8 +62,9 @@ folder names for the source files.
 - Attachments added trough the App are stored in:
 	./images/uploads
 
+-------
 
-
+- Install the Digital PErsona service to communicate with figerprint readers
 
 #---
 # Digitalpersona connection (authorize this URLS)
