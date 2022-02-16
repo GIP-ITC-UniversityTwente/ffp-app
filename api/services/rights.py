@@ -201,13 +201,14 @@ file = open('params.json')
 dbparams = json.loads(str(file.read()))
 database = params.getvalue('database')
 
-if operation == 'update':
-    file = open('.params')
-    adminParams = json.loads(str(file.read()))
-    dbparams['user'] = adminParams['user']
-    dbparams['password'] = adminParams['password']
+# if operation == 'update':
+#     file = open('.params')
+#     adminParams = json.loads(str(file.read()))
+#     dbparams['user'] = adminParams['user']
+#     dbparams['password'] = adminParams['password']
+# connection_string = connParams(database)
 
-connection_string = connParams(database)
+connection_string = connParams(database, True if operation == 'update' else False)
 pg = db_connection(connection_string)
 if pg['success'] == False:
     response = err_message(pg['message'])
