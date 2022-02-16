@@ -15,7 +15,3 @@
 
     * FfP data model v9.2
 
-
-### Screenshot:
-
-![GitHub Logo](/images/ffp-app.png)
