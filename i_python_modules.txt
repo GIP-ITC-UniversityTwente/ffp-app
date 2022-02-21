@@ -17,7 +17,10 @@ v3.5.0
 
 # copy favicon.ico to C:\ms4w\Apache\htdocs
 
-$ pip install pathlib
+# change tp the pip folder to install required python libraries
+$ cd C:\ms4w\Python\Scripts
 
+# Install additional python libraries
+$ pip install pathlib
 $ pip install psycopg2
 
