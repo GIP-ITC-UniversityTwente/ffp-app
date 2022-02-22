@@ -146,7 +146,7 @@ def getAppdataValues():
             SELECT st_setsrid('%s'::box2d, 4326) AS outerbox
         ),
         d as (
-            select st_setsrid(st_extent(geom),4326) AS innerbox
+            SElECT st_setsrid(st_extent(geom),4326) AS innerbox
             FROM spatialunit
         )
         SELECT
