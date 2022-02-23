@@ -4,14 +4,16 @@
 
 
 ### Vesrion
+
     3.5.0 -> Production release
 
 
 ### Requirements:
-
-    * Apache
-    * MapServer
-    * Python 3
-
+                   -
+    * Apache        |
+    * MapServer	    |--> bundled with "ms4w"
+    * Python 3      |
+                   - 
+					
     * FfP data model v9.2
 
