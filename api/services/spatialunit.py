@@ -507,7 +507,7 @@ def updateSpatialunits():
                     INSERT INTO puntos_predio (pto, id_pol, num_pto, label, accuracy, geom) VALUES (
                         (SELECT MAX(pto) FROM puntos_predio) + 1,
                         %s, %s, 'T', 0,
-                        ST_Force4D(ST_Point(%s, 4326))
+                        ST_Force4D(ST_SetSRID(ST_Point(%s), 4326))
                     );
                 """ % (su_id, str(point['num_pto']), coords))
 
