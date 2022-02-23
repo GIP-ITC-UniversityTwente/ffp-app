@@ -492,7 +492,7 @@ def updateSpatialunits():
                 coords = ','.join([str(c) for c in point['wgscoords']])
                 sqlCode += ("""
                     UPDATE puntos_predio
-                    SET geom = ST_Force4D(ST_Point(%s, 4326))
+                    SET geom = ST_Force4D(ST_SetSRID(ST_Point(%s), 4326))
                     WHERE id_pol = %s AND num_pto = %s;
                 """ % (coords, su_id, str(point['num_pto'])))
             elif point['status'] == 2:
