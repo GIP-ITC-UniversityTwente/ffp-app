@@ -399,10 +399,12 @@ def insertParty():
         # add the new party
         phone_number = 'null' if party['phone_number'] == '' else "'"+party['phone_number']+"'"
         sqlCode = """
-            INSERT INTO party VALUES(
-                %s, '%s', '%s', '%s', '%s', %s, 1,
-                (SELECT '{'||upper((uuid_generate_v4())::text)||'}'),
-                '%s', %s, null, null, null, %s);
+            INSERT INTO party (objectid, first_name, last_name, date_of_birth, id_number,
+                               gender, party_type, globalid, right_id, phone_number, civil_status,
+                               housing_subsidy, other_ownership_rights, la_partyid)
+            VALUES(%s, '%s', '%s', '%s', '%s', %s, 1,
+                   (SELECT '{'||upper((uuid_generate_v4())::text)||'}'),
+                   '%s', %s, null, null, null, %s);
         """ % (objectid, party['first_name'], party['last_name'], party['date_of_birth'],
                party['id_number'], party['gender'], right_id, phone_number, la_partyid)
 

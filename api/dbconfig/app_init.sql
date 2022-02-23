@@ -471,6 +471,11 @@ BEGIN;
 
     SELECT populate_geometry_columns();
 
+    ALTER TABLE "right" ALTER COLUMN time_spec_end TYPE timestamp without time zone ;
+    ALTER TABLE "right" ALTER COLUMN time_spec_start TYPE timestamp without time zone ;
+    ALTER TABLE spatialunit ALTER COLUMN creationdate TYPE timestamp without time zone ;
+    ALTER TABLE party ALTER COLUMN date_of_birth TYPE timestamp without time zone ;
+
     ALTER SCHEMA inspection OWNER TO kadaster_admin;
     ALTER TABLE muestra_limite_view OWNER TO kadaster_admin;
     ALTER TABLE concepto_predio_con_vecinos_view OWNER TO kadaster_admin;
