@@ -11,7 +11,7 @@
 ### Requirements:
                    -
     * Apache        |
-    * MapServer	    |--> bundled with "ms4w"
+    * MapServer     |--> bundled with "ms4w"
     * Python 3      |
                    - 
 					
