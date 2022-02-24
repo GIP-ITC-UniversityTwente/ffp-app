@@ -410,7 +410,7 @@ def checkSpatialunits():
         validity_code += validityCode + "', 3857) AS geom "
         overlap_code += overlapCode + "', 4326) AS geom "
 
-    sql_code = ("""
+    sqlCode = ("""
         WITH g AS (
             %s
         )
@@ -420,7 +420,7 @@ def checkSpatialunits():
         FROM g
     """ % (validity_code))
 
-    query = db_query(pg_cursor, sql_code)
+    query = db_query(pg_cursor, sqlCode)
     if query['success'] == False:
         response = err_message(query['message'])
         pg_cursor.close()
@@ -435,7 +435,7 @@ def checkSpatialunits():
                 isValid = False
 
         if isValid:
-            sql_code = ("""
+            sqlCode = ("""
                 WITH g AS (
                     %s
                 ),
@@ -453,7 +453,7 @@ def checkSpatialunits():
                 FROM u1, u2
             """ % (overlap_code, suList))
 
-            query = db_query(pg_cursor, sql_code)
+            query = db_query(pg_cursor, sqlCode)
             if query['success'] == False:
                 response = err_message(query['message'])
                 pg_cursor.close()
