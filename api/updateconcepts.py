@@ -110,7 +110,7 @@ def updateConcepts():
             else:
                 concepts[remarks] = 'null'
             sql_code = ("""
-                SELECT concepto_propietario_limite(%s, %s, %s, to_timestamp('%s', 'DD-Mon-YYYY')::date, %s);
+                SELECT ffp_concepto_propietario_limite(%s, %s, %s, to_timestamp('%s', 'DD-Mon-YYYY')::date, %s);
             """ % (limitId, partyId, concepts[status], concepts[sign_date], concepts[remarks]))
             query = db_transaction(pg_cursor, sql_code)
             if query['success'] == False:
