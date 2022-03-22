@@ -17,7 +17,8 @@ v3.5.0
 
 # copy favicon.ico to C:\ms4w\Apache\htdocs
 
-# change tp the pip folder to install required python libraries
+# change your location to the 'pip' folder to install the required python libraries
+$ c:
 $ cd C:\ms4w\Python\Scripts
 
 # Install additional python libraries
