@@ -15,10 +15,10 @@ Source DB model (ffp-v9.2)
 
 -------
 
-Create the necesary Apache configuration files (httpd_###.conf) based on the chosen
+Create the necessary Apache configuration files (httpd_###.conf) based on the chosen
 folder names for the source files.
 
-    For the application: 'httpd_ffp.conf' :
+    For the application: 'C:/ms4w/httpd.d/httpd_ffp.conf' :
 
         Alias /ffp/ "C:/code/ffp/"
 
@@ -32,7 +32,7 @@ folder names for the source files.
         </Directory>
 	
 	
-    For example 'httpd_basedata.conf' :
+    For example 'C:/ms4w/httpd.d/httpd_basedata.conf' :
 
         Alias /ffp/ "C:/code/basedata/"
 
