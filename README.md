@@ -20,4 +20,4 @@
 
 ### Instructions: 
 
-[Configuration Document](https://docs.google.com/document/d/1_Y_EWKrDW6NlMlkLYea4XAJUXckWF5CmP_GsrKUEm4E/).
+	<a href="https://docs.google.com/document/d/1_Y_EWKrDW6NlMlkLYea4XAJUXckWF5CmP_GsrKUEm4E/">Configuration Document</a>
