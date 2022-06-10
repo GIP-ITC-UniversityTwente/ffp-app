@@ -21,7 +21,7 @@ v3.5.0
 $ c:
 $ cd C:\ms4w\Python\Scripts
 
-# Install additional python libraries
+# Install additional python modules
 $ pip install pathlib
 $ pip install psycopg2
 
