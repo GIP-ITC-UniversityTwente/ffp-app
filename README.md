@@ -18,4 +18,6 @@
     * FfP data model v9.2
 
 
-### Instructions: [Configuration Document](https://docs.google.com/document/d/1_Y_EWKrDW6NlMlkLYea4XAJUXckWF5CmP_GsrKUEm4E/).
+### Instructions: 
+
+[Configuration Document](https://docs.google.com/document/d/1_Y_EWKrDW6NlMlkLYea4XAJUXckWF5CmP_GsrKUEm4E/).
