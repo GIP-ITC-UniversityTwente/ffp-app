@@ -5,7 +5,7 @@
 
 ### Vesrion
 
-    3.5.0 -> Production release
+    3.5.0 -> Development release, for production use 3.2.5
 
 
 ### Requirements:
