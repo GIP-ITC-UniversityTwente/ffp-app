@@ -31,10 +31,10 @@
 	* Create the necesary Apache configuration files (httpd_###.conf)
 	
 	
-		- For the application: "httpd_ffp.conf":
+		- For the application: "httpd_ffp-app.conf":
 
-			Alias /ffp/ "C:/code/ffp/"
-			<Directory "C:/code/ffp/">
+			Alias /ffp-app/ "C:/code/ffp-app/"
+			<Directory "C:/code/ffp-app/">
 				AllowOverride All
 				Options Indexes FollowSymLinks Multiviews ExecCGI
 				AddHandler cgi-script .py
