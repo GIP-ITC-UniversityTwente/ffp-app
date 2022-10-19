@@ -220,7 +220,6 @@ BEGIN;
 
     --
 
-	DROP VIEW IF EXISTS concepto_predio_con_vecinos;
         CREATE OR REPLACE VIEW concepto_predio_con_vecinos
         AS
         SELECT f.predio,
@@ -394,7 +393,6 @@ BEGIN;
 
     --
 
-	DROP VIEW IF EXISTS revisa_limite;
         CREATE OR REPLACE VIEW revisa_limite
         AS
         SELECT c_t.limit1 AS limite1,
@@ -443,12 +441,11 @@ BEGIN;
         CONSTRAINT la_party_ldnumber_uk UNIQUE (id_number)
     );
 
-    --
-    -- Views
-    --
+	--
+	-- Views
+	--
 
-    DROP VIEW IF EXISTS revisa_limite_crt;
-    DROP VIEW IF EXISTS v_firma_l_crt;
+	DROP VIEW IF EXISTS v_firma_l_crt;
 
     CREATE OR REPLACE VIEW v_firma_l_crt
     AS
@@ -465,8 +462,11 @@ BEGIN;
     FROM firma_l f
         LEFT JOIN party pt ON f.globalid::text = pt.right_id::text;
 
-    --
-	
+
+	--
+
+	DROP VIEW IF EXISTS revisa_limite_crt;
+
     CREATE OR REPLACE VIEW revisa_limite_crt
     AS
     SELECT c_t.limit1 AS limite,
@@ -486,20 +486,20 @@ BEGIN;
     WHERE c_t.limit1 = vfl_1.limitid AND c_t.limit2 = vfl_2.limitid
     ORDER BY c_t.limit1;
 
-    --
+	--
 
-    DROP MATERIALIZED VIEW IF EXISTS muestra_limite_view;
+	DROP MATERIALIZED VIEW IF EXISTS muestra_limite_view;
 
-    CREATE MATERIALIZED VIEW muestra_limite_view
+	CREATE MATERIALIZED VIEW muestra_limite_view
     AS
     SELECT limitid, estate as status
     FROM muestra_limite;
 
     --
 
-    DROP MATERIALIZED VIEW IF EXISTS concepto_predio_con_vecinos_view;
+	DROP MATERIALIZED VIEW IF EXISTS concepto_predio_con_vecinos_view;
 
-    CREATE MATERIALIZED VIEW concepto_predio_con_vecinos_view
+	CREATE MATERIALIZED VIEW concepto_predio_con_vecinos_view
     AS
     SELECT vr.predio,
         f.limitid,
