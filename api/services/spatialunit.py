@@ -148,6 +148,56 @@ def getFullSpatialunitData(suId, srid):
 
 
 
+def coordsAndDistances(suId, srid):
+    pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
+    pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+
+    sql_code = ("""
+        WITH l AS (
+            SELECT p.num_pto, p.pto AS ogc_id, l.id_pol AS su_id,
+                round(ST_X(ST_Transform(p.geom, %s))::NUMERIC,0) AS x,
+                round(ST_Y(ST_Transform(p.geom, %s))::NUMERIC,0) AS y,
+                round(ST_Length(ST_Transform(l.geom, %s))::NUMERIC,0)::TEXT || ' m' AS length,
+                c.pol2 AS neigh_suid, initcap(r.nombre) AS neigh_name,
+                ST_Transform(p.geom, %s) AS ogc_geom
+            FROM limites AS l JOIN puntos_predio AS p
+                ON p.pto = l.ancla1
+                LEFT JOIN c_t AS c ON l.limitid = c.limit1
+                LEFT JOIN representante AS r ON c.pol2 = r.predio
+            WHERE l.id_pol = %s
+            ORDER BY 1
+        )
+        SELECT
+        json_build_object(
+            'type', 'FeatureCollection',
+            'name', 'anchorpoints',
+            'details', (
+                SELECT row_to_json(d.*)
+                FROM (SELECT physical_id,
+                             ST_AsText(ST_Centroid(geom)) AS centroid,
+                             round(ST_Area(ST_Transform(geom, %s))) AS area
+                      FROM spatialunit WHERE objectid = %s) as d
+            ),
+            'features', json_agg(ST_AsGeoJSON(t.*)::json)
+        ) AS record
+        FROM (
+            SELECT row_number() over() AS seq_id, * FROM l
+        ) AS t
+    """ % (srid, srid, srid, srid, suId, srid, suId))
+
+    query = db_query(pg_cursor, sql_code)
+    if query['success'] == False:
+        response = err_message(query['message'])
+    else:
+        result = json.dumps(query['records'][0]['record'])
+        response = '{"success" : true, "record" : ' + result + '}'
+
+    pg_cursor.close()
+    return response
+#-- coordsAndDistances ---
+
+
+
 def partySpatialunits(id_number):
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
@@ -559,6 +609,10 @@ else:
     elif operation == 'party':
         idNumber = params.getvalue('id_number')
         response = partySpatialunits(idNumber)
+    elif operation == 'coords':
+        suId = params.getvalue('su_id')
+        srid = params.getvalue('srid')
+        response = coordsAndDistances(suId, srid)
     elif operation == 'edit':
         suId = params.getvalue('su_id')
         srid = params.getvalue('srid')

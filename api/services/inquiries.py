@@ -173,6 +173,33 @@ def search(searchString):
 
 
 
+def partySearch(searchString):
+    pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
+    pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+
+    sql_code = ("""
+        SELECT p.first_name || ' ' || p.last_name AS full_name, id_number,
+            json_agg(s.objectid ORDER BY s.objectid) AS oids, count(*)
+        FROM party AS p JOIN "right" AS r ON p.right_id = r.globalid
+            JOIN spatialunit AS s ON r.spatialunit_id = s.globalid
+        WHERE lower(p.last_name) LIKE lower('%s')
+            OR lower(p.first_name) LIKE lower('%s')
+        GROUP BY 1,2
+    """ %('%' + searchString + '%', '%' + searchString + '%'))
+
+    query = db_query(pg_cursor, sql_code)
+    if query['success'] == False:
+        response = err_message(query['message'])
+    else:
+        result = json.dumps(query['records'])
+        response = result
+
+    pg_cursor.close()
+    return response
+#-- partySearch
+
+
+
 def getList(idList):
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
@@ -217,6 +244,8 @@ else:
     schema = params.getvalue('schema')
     if operation == 'search':
         response = search(params.getvalue('filter[value]'))
+    elif operation == 'party':
+        response = partySearch(params.getvalue('filter[value]'))
     elif operation == 'list':
         idList = params.getvalue('id_list')
         response = getList(idList)

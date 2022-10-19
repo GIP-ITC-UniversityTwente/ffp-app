@@ -1,14 +1,11 @@
 {
-    "name" : "Fit-for-Purpose — Web Application",
-    "version" : "3.5.0",
-    "year" : "2022",
     "lang" : "en",
 
     "basemap" : "googleSatellite",
     "imageBasemap" : true,
-    "srid": 3117,
+    "srid": 9377,
 
-    "snapDistance": 5,
+    "snapDistance" : 5,
 
     "disclaimer" : [
         "Los abajo firmantes, como colindantes del predio objeto de levantamiento",
@@ -23,7 +20,7 @@
             "id" : "cartoIgac",
             "name" : "Cartograpic IGAC",
             "isImage" : false,
-            "tileURL" : "https://geocarto.igac.gov.co/arcgis/rest/services/base/carto/MapServer/tile/{z}/{y}/{x}"
+            "tileURL" : "https://geoportal.igac.gov.co/arcgis/rest/services/base/carto/MapServer/tile/{z}/{y}/{x}"
         }
     ]
 }

@@ -15,7 +15,7 @@ MAP
         "init=epsg:4326"
     END
   #---
-    EXTENT -80.72 -5.13 -67.21 13.47
+    EXTENT -78.99 -4.29 -66.88 12.44
 
 #----- Start of WEB DEFINITION ------
     WEB
@@ -40,7 +40,7 @@ MAP
             "wms_postcode" "7514 AE"
             "wms_country" "The Netherlands"
             "wms_title" "OWS services Fit-For-Purpose project"
-            "wms_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117"
+            "wms_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117 EPSG:9377"
             "wms_feature_info_mime_type" "application/vnd.ogc.gml"
             "wms_feature_info_mime_type" "text/plain"
             "wms_feature_info_mime_type" "text/html"
@@ -50,7 +50,7 @@ MAP
             "wms_enable_request" "GetMap GetFeatureInfo GetCapabilities"
           #---
             "wfs_title" "WFS service Fit-For-Purpose project"
-            "wfs_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117"
+            "wfs_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117 EPSG:9377"
             "wfs_server_version" "1.0.0"
             "wfs_namespace_prefix" "ffp"
             "wfs_enable_request" "GetFeature DescribeFeature GetCapabilities"
@@ -118,6 +118,42 @@ MAP
 
 #----- LAYER DEFINITIONS ------
 
+    #----- graticule layer -----
+    LAYER
+      NAME "graticule"
+      TYPE LINE
+      STATUS ON
+      MAXSCALEDENOM 50000
+      CLASS
+        NAME "Graticule"
+        STYLE
+            COLOR 100 100 100
+            WIDTH 0.5
+        END
+        LABEL
+            COLOR  100 100 100
+            FONT "calibri"
+            TYPE truetype
+            SIZE 7
+            POSITION AUTO
+            PARTIALS FALSE
+            BUFFER 2
+            OUTLINECOLOR 255 255 255
+        END
+      END
+      GRID
+        LABELFORMAT '%.0f m'
+        MININTERVAL 200
+      END
+      PROJECTION
+        "init=epsg:9377"
+      END
+      METADATA
+        "DESCRIPTION" "Graticule"
+      END
+    END #----- graticule layer -----
+
+
     #----- crt_spatialunit layer -----
     LAYER
         NAME "crt_spatialunit"
@@ -128,7 +164,7 @@ MAP
         CONNECTIONTYPE postgis
         CONNECTION "user=kadaster password=kadaster** host=%HOST%
                     port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
-            DATA "ogc_geom FROM (SELECT objectid AS ogc_id, spatialunit_name, geom AS ogc_geom FROM %SCHEMA%.spatialunit WHERE objectid = '%SU_ID%') AS query USING UNIQUE ogc_id USING SRID=4326"
+        DATA "ogc_geom FROM (SELECT objectid AS ogc_id, spatialunit_name, geom AS ogc_geom FROM %SCHEMA%.spatialunit WHERE objectid = '%SU_ID%') AS query USING UNIQUE ogc_id USING SRID=4326"
       #---
         VALIDATION
             "default_SU_ID" "%"
@@ -148,10 +184,10 @@ MAP
         END
       #---
         METADATA
-            "wms_title" "Spatialunit"
+            "wms_title" "crt_spatialunit"
             "wms_abstract" "Polygons of spatialunits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "crt_spatialunit"
             "wfs_abstract" "Polygons of spatialunits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -159,7 +195,7 @@ MAP
         END
       #---
         CLASS
-            NAME "spatialunit"
+            NAME "crt_spatialunit"
             STYLE
                 # COLOR "#ffebcd"
                 OUTLINECOLOR 0 255 180
@@ -201,7 +237,7 @@ MAP
             "wms_title" "Spatialunit"
             "wms_abstract" "Polygons of spatialunits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "Spatialunit"
             "wfs_abstract" "Polygons of spatialunits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -355,7 +391,7 @@ MAP
             "wms_title" "Conflcits"
             "wms_abstract" "Polygons of conflcits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "conflicts"
             "wfs_abstract" "Polygons of conflcits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -381,9 +417,9 @@ MAP
 
 
 
-    #----- neighbours layer -----
+    #----- neighbours by list layer -----
     LAYER
-        NAME "neighbours"
+        NAME "neighbours_bylist"
         TYPE POLYGON
         STATUS ON
         DUMP TRUE
@@ -411,10 +447,10 @@ MAP
         END
       #---
         METADATA
-            "wms_title" "Spatialunit"
+            "wms_title" "neighbours"
             "wms_abstract" "Polygons of spatialunits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "neighbours"
             "wfs_abstract" "Polygons of spatialunits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -422,13 +458,67 @@ MAP
         END
       #---
         CLASS
-            NAME "spatialunit"
+            NAME "neighbours"
             STYLE
                 OUTLINECOLOR 255  105  180
                 WIDTH 2
             END
         END
-    END #----- neighbours layer -----
+    END #----- neighbours by list layer -----
+
+
+
+    #----- neighbours layer -----
+    LAYER
+      NAME "neighbours"
+      TYPE POLYGON
+      STATUS ON
+      DUMP TRUE
+    #---
+      CONNECTIONTYPE postgis
+      CONNECTION "user=kadaster password=kadaster** host=%HOST%
+                  port=%PORT% dbname=%DATABASE% options='-c client_encoding=UTF8'"
+          DATA 'ogc_geom FROM (SELECT row_number() over() as ogc_id, n.vecino AS neigh_suid, initcap(n.nombre_vecino) AS neigh_name, s.geom AS ogc_geom
+          FROM %SCHEMA%.concepto_predio_con_vecinos as n JOIN %SCHEMA%.spatialunit AS s on n.vecino = s.objectid
+          WHERE predio = %SU_ID%
+          GROUP BY 2,3,4) AS query USING UNIQUE ogc_id USING SRID=4326'
+    #---
+      VALIDATION
+          "default_SU_ID" "%"
+          "SU_ID" ".+$"
+          "default_DATABASE" "%"
+          "DATABASE" ".+$"
+          "default_SCHEMA" "%"
+          "SCHEMA" ".+$"
+          "default_PORT" "5432"
+          "PORT" ".+$"
+          "default_HOST" "localhost"
+          "HOST" ".+$"
+      END
+    #---
+      PROJECTION
+          "init=epsg:4326"
+      END
+    #---
+      METADATA
+          "wms_title" "neighbours"
+          "wms_abstract" "Polygons of spatialunits"
+          "wms_include_items" "all"
+          "wfs_title" "neighbours"
+          "wfs_abstract" "Polygons of spatialunits"
+          "wfs_getfeature_formatlist" "geojson"
+          "gml_featureid" "ogc_id"
+          "gml_include_items" "all"
+      END
+    #---
+      CLASS
+          NAME "neighbours"
+          STYLE
+              OUTLINECOLOR 255  105  180
+              WIDTH 2
+          END
+      END
+  END #----- neighbours layer -----
 
 
 
@@ -493,7 +583,7 @@ MAP
             "wms_title" "Vertices"
             "wms_abstract" "vertices of spatialunits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "Vertices"
             "wfs_abstract" "vertices of spatialunits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -601,7 +691,7 @@ MAP
             "wms_title" "Vertices"
             "wms_abstract" "vertices of spatialunits"
             "wms_include_items" "all"
-            "wfs_title" "Veredas"
+            "wfs_title" "Vertices"
             "wfs_abstract" "vertices of spatialunits"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"
@@ -651,10 +741,10 @@ MAP
         END
       #---
         METADATA
-            "wms_title" "Boundaries"
+            "wms_title" "timeline"
             "wms_abstract" "Boundaries between spatial units"
             "wms_include_items" "all"
-            "wfs_title" "Boundaries"
+            "wfs_title" "timeline"
             "wfs_abstract" "Boundaries between spatial units"
             "wfs_getfeature_formatlist" "geojson"
             "gml_featureid" "ogc_id"

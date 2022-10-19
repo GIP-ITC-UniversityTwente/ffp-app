@@ -143,6 +143,7 @@ def getPartyData():
 def updateParty():
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+    pg_cursor.execute("""SET datestyle TO 'ISO, MDY'""")
 
     partyChecked = True if params.getvalue('partyChecked') == 'true' else False
     alreadyChecked = True if params.getvalue('alreadyChecked') == 'true' else False
@@ -363,6 +364,7 @@ def updateParty():
 def insertParty():
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+    pg_cursor.execute("""SET datestyle TO 'ISO, MDY'""")
 
     # ---
 

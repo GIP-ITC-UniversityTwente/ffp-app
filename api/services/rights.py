@@ -74,6 +74,7 @@ def getrightdetails():
 def updateRight():
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+    pg_cursor.execute("""SET datestyle TO 'ISO, MDY'""")
 
     rightId = params.getvalue('right_id')
 

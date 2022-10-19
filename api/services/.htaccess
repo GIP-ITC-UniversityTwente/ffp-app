@@ -1,0 +1,14 @@
+<Files ~ "params.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ~ ".params">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ~ "ows.map">
+    Order allow,deny
+    Deny from all
+</Files>

@@ -30,8 +30,8 @@ def getCertificateData(suId, srid):
         SELECT ROW_NUMBER() OVER()::INTEGER AS id, p.objectid AS party_id, p.globalid,
             initcap(p.first_name) || ' ' || initcap(p.last_name) AS full_name,
             p.id_number, p.right_id AS right_id,
-            g.details, g.signed_on::VARCHAR, g.signature, encode(g.fingerprint, 'base64') as fingerprint
-        FROM party as p JOIN d ON d.objectid = p.objectid
+            g.details, g.signed_on::VARCHAR, g.signature, encode(g.fingerprint, 'base64') AS fingerprint
+        FROM party AS p JOIN d ON d.objectid = p.objectid
             LEFT JOIN boundary_signature AS g ON g.party_id = p.objectid
     """ % (suId))
 
@@ -47,9 +47,10 @@ def getCertificateData(suId, srid):
     #-----
 
     sql_code = ("""
-        SELECT objectid as id, globalid, round((st_area(st_transform(geom,%s)))::numeric,1)::VARCHAR AS area_has,
+        SELECT objectid AS id, globalid, round((st_area(st_transform(geom,%s)))::numeric,1)::VARCHAR AS area_has,
             initcap(spatialunit_name) AS su_label, landuse, creationdate::VARCHAR AS surveyed_on, physical_id, legal_id,
-            spatialunit_type as su_type, initcap(trim(gps_bearer)) AS gps_bearer
+            spatialunit_type AS su_type, initcap(trim(gps_bearer)) AS gps_bearer,
+            st_astext(st_centroid(geom)) as centroid
         FROM spatialunit
         WHERE objectid = %s
     """ % (srid, suId))
@@ -71,7 +72,7 @@ def getCertificateData(suId, srid):
         sql_code = ("""
             SELECT initcap(v.village_name) AS village_name,
                    initcap(v.municipality_name) AS municipality_name
-            FROM spatialunit as s LEFT JOIN basedata.village as v
+            FROM spatialunit AS s LEFT JOIN basedata.village AS v
                 ON st_intersects(st_centroid(s.geom), v.geom)
             WHERE s.objectid = %s
         """ %(suId))
@@ -91,16 +92,17 @@ def getCertificateData(suId, srid):
     #-----
 
     sql_code = ("""
-        with l as (
-            SELECT DISTINCT r.limite AS bounrary_id, r.pol2 AS su_id, initcap(r.nombre2) AS full_name, r.concepto2 AS status,
-                r.id_number2 as id_number, r.party_id2 as party_id, g.signature
+        WITH l AS (
+            SELECT DISTINCT r.limite AS bounrary_id, r.pol2 AS su_id, initcap(r.nombre2) AS full_name,
+                r.concepto2 AS status, r.id_number2 AS id_number, r.party_id2 AS party_id, g.signature
             FROM revisa_limite_crt AS r LEFT JOIN boundary_signature AS g ON r.party_id2 = g.party_id
             WHERE r.pol1 = %s
         )
-        select l.su_id, s.spatialunit_name, json_agg(row_to_json((select list from (select l.full_name, l.party_id, l.id_number, l.status, l.signature) as list))) as status_list
-        from l JOIN spatialunit AS s ON l.su_id = s.objectid
-        group by 1,2
-        order by 1
+        SELECT l.su_id, s.spatialunit_name,
+            json_agg(row_to_json((SELECT list FROM (SELECT l.full_name, l.party_id, l.id_number, l.status, l.signature) AS list))) AS status_list
+        FROM l JOIN spatialunit AS s ON l.su_id = s.objectid
+        GROUP BY 1,2
+        ORDER BY 1
     """ % (suId))
 
     query = db_query(pg_cursor, sql_code)
@@ -112,11 +114,32 @@ def getCertificateData(suId, srid):
         result = json.dumps(query['records'])
         response += ', "status" : ' + result
 
+    #-----
+
+    sql_code = ("""
+        WITH l AS (
+            SELECT DISTINCT r.party_id1, g.signed_on::VARCHAR, g. signature, r.pol2, r.concepto1
+            FROM revisa_limite_crt AS r LEFT JOIN boundary_signature AS g ON r.party_id1 = g.party_id
+            WHERE pol1 = %s
+            ORDER BY 1,4
+        )
+        SELECT l.party_id1 as party_id, l.signed_on, l.signature, json_agg(json_build_object('neigh_suid', l.pol2, 'status', l.concepto1)) as status_list
+        FROM l
+        GROUP BY 1,2,3
+    """ % (suId))
+
+    query = db_query(pg_cursor, sql_code)
+    if query['success'] == False:
+        response = err_message(query['message'])
+        pg_cursor.close()
+        return response
+    else:
+        result = json.dumps(query['records'])
+        response += ', "party_status" : ' + result
+
     pg_cursor.close()
     return '{"success" : true, ' + response + '}'
-
 #-- getCertificateData ---
-
 
 
 

@@ -3,8 +3,7 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import json
-from psql import db_connection
-from psql import db_transaction
+from psql import db_connection, db_transaction, connParams
 import cgi
 import base64
 
@@ -15,17 +14,12 @@ def err_message(err):
 
 
 
-def connParams(database):
-    return ("""dbname='%s' host='%s' port='%s' user='%s' password='%s'"""
-            % (database, dbparams['host'], dbparams['port'], dbparams['user'], dbparams['password']))
-#-- connParams ---
-
-
-
 def updateConcepts():
     schema = params.getvalue('schema')
     pg_cursor = pg['conn'].cursor(cursor_factory=RealDictCursor)
     pg_cursor.execute("""SET search_path = %s, public""" % (schema))
+    pg_cursor.execute("""SET datestyle TO 'ISO, MDY'""")
+
 
     partyId = params.getvalue('party_id')
     rightId = params.getvalue('right_id')
@@ -132,19 +126,9 @@ def updateConcepts():
 
 #--- main ---
 params = cgi.FieldStorage()
-
-
-file = open('params.json')
-dbparams = json.loads(str(file.read()))
-
-file = open('.params')
-adminParams = json.loads(str(file.read()))
-dbparams['user'] = adminParams['user']
-dbparams['password'] = adminParams['password']
-
 database = params.getvalue('database')
 
-connection_string = connParams(database)
+connection_string = connParams(database, True)
 pg = db_connection(connection_string)
 if pg['success'] == False:
     response = err_message(pg['message'])

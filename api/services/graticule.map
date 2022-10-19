@@ -1,0 +1,135 @@
+MAP
+    NAME "Graticule service Fit-For-Purpose project"
+    IMAGECOLOR 255 255 255
+    TRANSPARENT ON
+    SIZE 1350 1900
+    MAXSIZE 4096
+
+    IMAGETYPE PNG24
+
+	CONFIG "MS_ERRORFILE" "../ms_error.txt"
+
+  #---
+    PROJECTION
+        "init=epsg:4326"
+    END
+  #---
+    EXTENT -78.99 -4.29 -66.88 12.44
+
+#----- Start of WEB DEFINITION ------
+    WEB
+        IMAGEPATH "/ms4w/tmp/ms_tmp/"
+        IMAGEURL "/ms_tmp/"
+      #---
+        METADATA
+			      "map" "C:\code\ffp\ffpapp_v3.2.5\api\ows.map"
+            "ows_schemas_location" "http://schemas.opengeospatial.net"
+            "ows_title" "OWS services Fit-For-Purpose project"
+            "ows_abstract" "OWS services Fit-For-Purpose project"
+            "ows_onlineresource" "http://localhost/cgi-bin/mapserv.exe?"
+            "ows_fees""None"
+            "ows_accessconstraints" "None"
+          #---
+            "wms_contactperson" "SDI-T Team"
+            "wms_contactorganization" "ITC"
+            "wms_addresstype" "Postal"
+            "wms_address" "Hengelosestraat 99"
+            "wms_city" "Enschede"
+            "wms_stateorprovince" "Overijssel"
+            "wms_postcode" "7514 AE"
+            "wms_country" "The Netherlands"
+            "wms_title" "OWS services Fit-For-Purpose project"
+            "wms_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117 EPSG:9377"
+            "wms_feature_info_mime_type" "application/vnd.ogc.gml"
+            "wms_feature_info_mime_type" "text/plain"
+            "wms_feature_info_mime_type" "text/html"
+            "wms_server_version" "1.1.1"
+            "wms_formatlist" "image/png,image/gif,image/bmp,image/jpeg"
+            "wms_format" "image/png"
+            "wms_enable_request" "GetMap GetFeatureInfo GetCapabilities"
+          #---
+            "wfs_title" "WFS service Fit-For-Purpose project"
+            "wfs_srs" "EPSG:4326 EPSG:3857 EPSG:3115 EPSG:3116 EPSG:3117 EPSG:9377"
+            "wfs_server_version" "1.0.0"
+            "wfs_namespace_prefix" "ffp"
+            "wfs_enable_request" "GetFeature DescribeFeature GetCapabilities"
+        END
+    END
+#----- End of WEB DEFINITION ------
+
+    FONTSET  "fonts/fonts.list"
+
+    #---
+    OUTPUTFORMAT
+        NAME pnggd
+        DRIVER "GD/PNG"
+        MIMETYPE "image/png"
+        IMAGEMODE PC256
+        EXTENSION "png"
+    END
+    OUTPUTFORMAT
+        NAME pnggd24
+        DRIVER "GD/PNG"
+        MIMETYPE "image/png"
+        IMAGEMODE RGBA
+        EXTENSION "png"
+    END
+    OUTPUTFORMAT
+        NAME jpeggd
+        DRIVER "GD/JPEG"
+        FORMATOPTION "QUALITY=75"
+        MIMETYPE "image/jpeg"
+        IMAGEMODE RGB
+        EXTENSION "jpg"
+    END
+    OUTPUTFORMAT
+        NAME "GTiff"
+        DRIVER GDAL/GTiff
+        MIMETYPE "image/tiff"
+        FORMATOPTION 'GDAL/*: "NULLVALUE=255"'
+        IMAGEMODE RGB
+        EXTENSION "tif"
+    END
+    #---
+
+
+#----- LAYER DEFINITIONS ------
+
+    #----- graticule layer -----
+    LAYER
+      NAME "graticule"
+      TYPE LINE
+      STATUS ON
+      MAXSCALEDENOM 50000
+      CLASS
+        NAME "Graticule"
+        STYLE
+            COLOR 100 100 100
+            WIDTH 0.5
+        END
+        LABEL
+            COLOR  100 100 100
+            FONT "calibri"
+            TYPE truetype
+            SIZE 7
+            POSITION AUTO
+            PARTIALS FALSE
+            BUFFER 2
+            OUTLINECOLOR 255 255 255
+        END
+      END
+      GRID
+        LABELFORMAT '%.0f m'
+        MININTERVAL 1000
+      END
+      PROJECTION
+        "init=epsg:9377"
+      END
+      METADATA
+        "DESCRIPTION" "Graticule"
+      END
+    END #----- graticule layer -----
+
+#----- End of LAYER DEFINITIONS ------
+
+END
