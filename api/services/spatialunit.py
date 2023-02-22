@@ -562,8 +562,8 @@ def updateSpatialunits():
                 """ % (su_id, str(point['num_pto']), coords))
 
         sqlCode += ("""
-                SELECT actualice_geom_predio(%s);
-                SELECT reemplaza_limite(%s);
+                SELECT ffp_actualice_geom_predio(%s);
+                SELECT ffp_reemplaza_limite(%s);
         """ % (su_id, su_id))
 
         query = db_transaction(pg_cursor, sqlCode)

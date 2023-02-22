@@ -1,7 +1,8 @@
+#!C:\ms4w\Python\python.exe
 import re
 
 s = 'init=epsg:'
-file = open('grid.map', 'r')
+file = open('graticule.map', 'r')
 out = open('res.map', 'w')
 lines = file.readlines()
 
@@ -20,7 +21,7 @@ for line in lines:
         else:
             count += 1
     newLines.append(line)
-        
+
 out.writelines(newLines)
 
 file.close()
