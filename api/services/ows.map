@@ -527,7 +527,7 @@ MAP
         NAME 'mosaic'
         TYPE RASTER
         STATUS ON
-        DATA "../../../basedata/%MOSAIC%.tif"
+        DATA "../../../../basedata/%MOSAIC%.tif"
         VALIDATION
             "default_MOSAIC" ""
             "MOSAIC" ".+$"

@@ -51,7 +51,7 @@ def getrightdetails():
 
     sql_code = ("""
         SELECT r.globalid AS right_id, r.right_type, r.right_source,
-            r.time_spec_start::varchar AS valid_since, description
+            (r.time_spec_start::timestamp)::varchar AS valid_since, description
         FROM spatialunit AS s JOIN "right" AS r ON s.globalid = r.spatialunit_id
         WHERE s.objectid = %s
     """ % (suId))

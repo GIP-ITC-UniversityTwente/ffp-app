@@ -141,7 +141,7 @@ def getAppdataValues():
             WHERE table_schema = 'inspection'
         ), p AS (
             SELECT count(*) FROM information_schema.table_privileges
-            WHERE grantee = 'kadaster'
+            WHERE grantee = 'kadaster' and table_schema = 'inspection'
         )
         SELECT
             CASE

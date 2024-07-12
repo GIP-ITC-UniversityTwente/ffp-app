@@ -1,0 +1,14 @@
+#!/bin/bash
+#echo "Content-type: text/plain"
+#echo ""
+MAPFILE="/data/web_folders/projects/ffp/app/api/services/ows.map"
+MAPSERV="/usr/lib/cgi-bin/mapserv"
+QUERY_STRING="map=${MAPFILE}&${QUERY_STRING}"
+#echo $QUERY_STRING
+if [ "${REQUEST_METHOD}" = "GET" ]; then
+  exec ${MAPSERV}
+else
+  echo "Sorry, I only understand GET requests."
+fi
+exit 0
+# End of Script
