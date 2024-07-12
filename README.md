@@ -20,7 +20,8 @@
 
 ### Configuration
 
-Run the `apache_mapserver_configuration.bat` file to create the required configuration elements in Apache/MapServer to run the app.
+Run the `apache_mapserver_configuration.bat` script to create the required configuration elements in Apache/MapServer to run the app. This script can be found in the [
+ffp-pg_scripts](https://github.com/GIP-ITC-UniversityTwente/ffp-pg_scripts) repository.
 
 	- Default App values such as language, SRID, etc. are stored in:
 
