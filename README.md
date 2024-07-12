@@ -25,7 +25,7 @@
 
 ### Configuration
 
-	Run the `apache_mapserver_configuration.bat` file to create the required configuration elements in Apache/MapServer to run the app.
+Run the `apache_mapserver_configuration.bat` file to create the required configuration elements in Apache/MapServer to run the app.
 
 	- Default App values such as language, SRID, etc. are stored in:
 
