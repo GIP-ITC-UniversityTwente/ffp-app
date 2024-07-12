@@ -11,14 +11,9 @@
 ### Requirements:
                    -
     * Apache        |
-    * MapServer     |--> bundled with "ms4w"
+    * MapServer     |--> bundled with "MS4W"
     * Python 3      |
                    -
-
-	* Python libraries
-		- pathlib
-		- psycopg2
-		- geocoder
 
     * FfP data model v9.4
 
