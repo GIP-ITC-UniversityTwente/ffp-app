@@ -16,6 +16,7 @@
                    -
 
     * FfP data model v9.4
+    * PostgreSQL
 
 An FfP edited database (see [ffp-pg_scripts](https://github.com/GIP-ITC-UniversityTwente/ffp-pg_scripts))
 
